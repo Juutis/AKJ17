@@ -12,12 +12,8 @@ public class ScaleToScreenSize : MonoBehaviour
     [SerializeField]
     private SpriteRenderer sr;
 
-    void Start()
+    public void ResizeSpriteToScreen()
     {
-        ResizeSpriteToScreen();
-    }
-
-    public void ResizeSpriteToScreen() {
         if (sr == null) return;
 
         float width = sr.sprite.bounds.size.x;

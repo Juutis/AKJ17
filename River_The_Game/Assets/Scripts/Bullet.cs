@@ -33,6 +33,14 @@ public class Bullet : MonoBehaviour
         dir = direction;
     }
 
+    void Update()
+    {
+        if (rbody.velocity.magnitude > 0.01f)
+        {
+            transform.right = rbody.velocity;
+        }
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {

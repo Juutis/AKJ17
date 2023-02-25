@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour
 
     public bool Alive = true;
     private EnemyMovement movement;
+    private EnemyShooting shooting;
     private Vector3 lastPosition;
     private Vector3 velocity;
     [SerializeField]
@@ -30,6 +31,7 @@ public class Enemy : MonoBehaviour
         renderer = GetComponentInChildren<SpriteRenderer>();
         rigidBody = GetComponent<Rigidbody2D>();
         movement = GetComponent<EnemyMovement>();
+        shooting = GetComponent<EnemyShooting>();
         spriteFlasher = GetComponent<SpriteFlasher>();
         anim = GetComponentInChildren<EnemyAnimator>();
         Alive = true;
@@ -100,6 +102,10 @@ public class Enemy : MonoBehaviour
         if (anim != null)
         {
             anim.Disable();
+        }
+        if (shooting != null)
+        {
+            shooting.enabled = false;
         }
     }
 

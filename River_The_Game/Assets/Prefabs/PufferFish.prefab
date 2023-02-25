@@ -135,7 +135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 2
-  bulletPrefab: {fileID: 512819945521265382, guid: 1a67bc4346c89354db851bc5edee9a8c, type: 3}
+  bulletPrefab: {fileID: 5236541138252582769, guid: a547cecd454fd4546b3734c75ec02ea7, type: 3}
   shootingRate: 30
   damage: 1
   direction: {x: 0, y: 0}

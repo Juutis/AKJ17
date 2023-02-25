@@ -17,4 +17,9 @@ public class GameManager : MonoBehaviour
     {
         shooting.IncreaseFireRate(increase);
     }
+
+    public void GameOver()
+    {
+        Debug.Log("Game over!");
+    }
 }

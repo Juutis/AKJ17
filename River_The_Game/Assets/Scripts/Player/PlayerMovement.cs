@@ -25,6 +25,8 @@ public class PlayerMovement : MonoBehaviour
     private bool isAboveWater = false;
     private bool isFalling = false;
 
+    private bool isAllowedToMove = true;
+
     private void Update()
     {
         CollectInput();
@@ -34,6 +36,26 @@ public class PlayerMovement : MonoBehaviour
             fallSpeedTimer += Time.deltaTime;
         }
         FaceDirection();
+    }
+
+    private void Start()
+    {
+        Spawn();
+    }
+
+    public void DisableControls()
+    {
+        rb.velocity = Vector2.zero;
+        isAllowedToMove = false;
+    }
+    public void EnableControls()
+    {
+        isAllowedToMove = true;
+    }
+
+    public void Spawn()
+    {
+        transform.position = WorldManager.main.PlayerStart.position;
     }
 
     private void CheckAboveWaterStatus()
@@ -77,6 +99,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!isAllowedToMove)
+        {
+            return;
+        }
         if (!isAboveWater && !isFalling)
         {
             ApplyMovement();

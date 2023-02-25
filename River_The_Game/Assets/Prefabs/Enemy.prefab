@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8895072204157305528}
   - component: {fileID: 7648829752920743895}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Triangle (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3579613001790804389}
   - component: {fileID: 1798160980017258018}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Triangle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,7 +178,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5745151467539459323}
   - component: {fileID: 7287573086968514236}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Triangle (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -264,9 +264,9 @@ GameObject:
   - component: {fileID: 8642373416166667958}
   - component: {fileID: 3861436710672341043}
   - component: {fileID: 7646996553788341365}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -288,7 +288,7 @@ Transform:
   - {fileID: 8895072204157305528}
   - {fileID: 5745151467539459323}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!70 &8642373416166667958
 CapsuleCollider2D:
@@ -375,7 +375,7 @@ GameObject:
   m_Component:
   - component: {fileID: 984656550429820623}
   - component: {fileID: 3777377373201079085}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}

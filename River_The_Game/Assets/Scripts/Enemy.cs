@@ -22,6 +22,7 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private ParticleSystem deathEffect;
     private SpriteFlasher spriteFlasher;
+    private EnemyAnimator anim;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +31,7 @@ public class Enemy : MonoBehaviour
         rigidBody = GetComponent<Rigidbody2D>();
         movement = GetComponent<EnemyMovement>();
         spriteFlasher = GetComponent<SpriteFlasher>();
+        anim = GetComponentInChildren<EnemyAnimator>();
         Alive = true;
     }
 
@@ -85,12 +87,19 @@ public class Enemy : MonoBehaviour
         }
         Alive = false;
         rigidBody.gravityScale = 1.0f;
-        movement.enabled = false;
+        if (movement != null)
+        {
+            movement.enabled = false;
+        }
         rigidBody.velocity = velocity;
         if (deathEffect != null)
         {
             var fx = Instantiate(deathEffect);
             fx.transform.position = transform.position;
+        }
+        if (anim != null)
+        {
+            anim.Disable();
         }
     }
 

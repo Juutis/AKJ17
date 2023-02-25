@@ -9,16 +9,42 @@ public class Enemy : MonoBehaviour
 
     private EnemyGroup enemyGroup;
 
+    private SpriteRenderer renderer;
+    private Rigidbody2D rigidBody;
+
+    [SerializeField]
+    private Sprite deathSprite;
+
+    private bool alive;
+    private EnemyMovement movement;
+    private Vector3 lastPosition;
+    private Vector3 velocity;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        renderer = GetComponentInChildren<SpriteRenderer>();
+        rigidBody = GetComponent<Rigidbody2D>();
+        movement = GetComponent<EnemyMovement>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!alive)
+        {
+            var targetDir = rigidBody.velocity;
+            var diff = Vector2.SignedAngle(-transform.right, targetDir);
+            var rotateSpeed = 720.0f;
+            var rotation = Mathf.Min(rotateSpeed * Time.deltaTime, Mathf.Abs(diff));
+            transform.Rotate(Vector3.forward, Mathf.Sign(diff) * rotation);
+        }
+    }
 
+    void LateUpdate()
+    {
+        velocity = (transform.position - lastPosition) / Time.deltaTime;
+        lastPosition = transform.position;
     }
 
     public void TakeDamage(float damage)
@@ -26,8 +52,20 @@ public class Enemy : MonoBehaviour
         hp -= damage;
         if (hp <= 0)
         {
-            Destroy(gameObject);
+            Kill();
         }
+    }
+
+    public void Kill()
+    {
+        if (deathSprite != null)
+        {
+            renderer.sprite = deathSprite;
+        }
+        alive = false;
+        rigidBody.gravityScale = 1.0f;
+        movement.enabled = false;
+        rigidBody.velocity = velocity;
     }
 
     public void RegisterGroup(EnemyGroup group)

@@ -32,7 +32,15 @@ public class PlayerHealth : MonoBehaviour
         playerMovement = GetComponent<PlayerMovement>();
         shooting = GetComponent<Shooting>();
         playerCollider = GetComponent<Collider2D>();
+        UIManager.main.SetLives(startingHealth);
     }
+
+    public void GainLife()
+    {
+        currentHealth += 1;
+        UIManager.main.GainLife();
+    }
+
     public void TakeDamage(int damage = 1)
     {
         if (isInvulnerable)
@@ -47,6 +55,7 @@ public class PlayerHealth : MonoBehaviour
             return;
         }
 
+        UIManager.main.LoseLife();
         playerMovement.Spawn();
         LoseControls();
 

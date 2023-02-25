@@ -10,14 +10,6 @@ public class WorldManager : MonoBehaviour
     [SerializeField]
     private LevelConfig level;
 
-    [SerializeField]
-    private SpriteRenderer waterBackground;
-    [SerializeField]
-    private SpriteRenderer waterForeground;
-    [SerializeField]
-    private SpriteRenderer skyBackground;
-    [SerializeField]
-    private SpriteShapeRenderer groundBackground;
 
     [SerializeField]
     private ScaleToScreenSize bgScaler;
@@ -47,24 +39,13 @@ public class WorldManager : MonoBehaviour
     public void Start()
     {
         worldMovement = GetComponent<WorldMovement>();
-        SetupVisuals();
     }
 
     public void StopWorldMovement()
     {
         worldMovement.StopMoving();
     }
-    private void SetupVisuals()
-    {
-        waterBackground.sprite = level.WaterBackground.Sprite;
-        waterBackground.color = level.WaterBackground.Color;
-        waterForeground.sprite = level.WaterForeground.Sprite;
-        waterForeground.color = level.WaterForeground.Color;
-        skyBackground.sprite = level.SkyBackground.Sprite;
-        skyBackground.color = level.SkyBackground.Color;
-        groundBackground.color = level.GroundBackground.Color;
-        bgScaler.ResizeSpriteToScreen();
-    }
+
 }
 
 [System.Serializable]

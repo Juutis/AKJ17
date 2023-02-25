@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     private LevelManager levelManager;
     [SerializeField]
     private LevelManager levelManagerPrefab;
+    [SerializeField]
+    private PlayerHealth playerHealth;
 
     private void Start()
     {
@@ -52,6 +54,11 @@ public class GameManager : MonoBehaviour
     public void NextLevel()
     {
         levelManager.NextLevel();
+    }
+
+    public void GainLife()
+    {
+        playerHealth.GainLife();
     }
 
     public void TheEnd()

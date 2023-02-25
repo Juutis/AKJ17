@@ -40,6 +40,10 @@ public class Pickup : MonoBehaviour
         {
             GameManager.main.UpgradeSideGun();
         }
+        else if (effect.Type == PickupEffectType.GainLife)
+        {
+            GameManager.main.GainLife();
+        }
     }
 
     public void Kill()
@@ -82,5 +86,6 @@ public enum PickupEffectType
     IncreaseBubbleFireRate,
     NextLevel,
     MainGunUpgrade,
-    SideGunUpgrade
+    SideGunUpgrade,
+    GainLife
 }

@@ -1,4 +1,6 @@
+using Mono.Cecil;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -15,6 +17,10 @@ public class EnemyShooting : MonoBehaviour
 
     [SerializeField]
     private float damage;
+
+    [Header("Constant direction type")]
+    [SerializeField]
+    private Vector2 direction;
 
     [Header("Omnidirectional type")]
     [SerializeField]
@@ -43,6 +49,10 @@ public class EnemyShooting : MonoBehaviour
                 omniDirections.Add(Quaternion.Euler(0, 0, angleBetweenDirs * i) * Vector2.left);
             }
         }
+        else if (type == ShootingType.ConstantDirection)
+        {
+            direction = direction.normalized;
+        }
     }
 
     // Update is called once per frame
@@ -58,12 +68,13 @@ public class EnemyShooting : MonoBehaviour
             return;
         }
 
-        if (type == ShootingType.Forward)
+        if (type == ShootingType.ConstantDirection)
         {
+            Vector3 dir = new Vector3(direction.x, direction.y, 0);
             lastShot = Time.time;
             GameObject bullet = Instantiate(bulletPrefab);
-            bullet.transform.position = transform.position + Vector3.left;
-            bullet.GetComponent<Bullet>().Initialize(Vector3.left);
+            bullet.transform.position = transform.position + dir;
+            bullet.GetComponent<Bullet>().Initialize(dir);
         }
         else if (type == ShootingType.OnPlayerY)
         {
@@ -102,6 +113,6 @@ public class EnemyShooting : MonoBehaviour
 enum ShootingType
 {
     OnPlayerY,
-    Forward,
+    ConstantDirection,
     Omnidirectional
 }

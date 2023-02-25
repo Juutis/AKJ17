@@ -133,8 +133,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4d86c91176273d4abfc7ea1e582d7b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 512819945521265382, guid: dd48f758a7303654ba448229831623ee, type: 3}
-  shootingRate: 120
+  upgradeSideGunner: 0
+  mainGunBulletPrefabs:
+  - {fileID: 512819945521265382, guid: dd48f758a7303654ba448229831623ee, type: 3}
+  - {fileID: 512819945521265382, guid: 366cd773384351a428aa05a87dcd8c75, type: 3}
+  - {fileID: 512819945521265382, guid: 9c01fd4cfa6e5364d9e46500d4963d08, type: 3}
+  sideGunBulletPrefabs:
+  - {fileID: 512819945521265382, guid: c66e09465fee6f64c8d9c0c77f7fcb7e, type: 3}
+  - {fileID: 512819945521265382, guid: c66e09465fee6f64c8d9c0c77f7fcb7e, type: 3}
+  - {fileID: 512819945521265382, guid: c66e09465fee6f64c8d9c0c77f7fcb7e, type: 3}
+  - {fileID: 512819945521265382, guid: c66e09465fee6f64c8d9c0c77f7fcb7e, type: 3}
+  shootingBaseRate: 120
 --- !u!114 &4851895891345244210
 MonoBehaviour:
   m_ObjectHideFlags: 0

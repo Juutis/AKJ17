@@ -71,7 +71,10 @@ public class Enemy : MonoBehaviour
         }
         Alive = false;
         rigidBody.gravityScale = 1.0f;
-        movement.enabled = false;
+        if (movement)
+        {
+            movement.enabled = false;
+        }
         rigidBody.velocity = velocity;
         if (deathEffect != null)
         {

@@ -25,6 +25,7 @@ public class LevelManager : MonoBehaviour
     private void Start()
     {
         Scene currentScene = SceneManager.GetActiveScene();
+        return;
         for (int index = 0; index <= scenes.Count; index += 1)
         {
             if (currentScene.path == scenes[index].scenePath)

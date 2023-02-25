@@ -28,9 +28,17 @@ public class Pickup : MonoBehaviour
         {
             GameManager.main.IncreaseBubbleFireRate(effect.Value);
         }
-        if (effect.Type == PickupEffectType.NextLevel)
+        else if (effect.Type == PickupEffectType.NextLevel)
         {
             GameManager.main.NextLevel();
+        }
+        else if (effect.Type == PickupEffectType.MainGunUpgrade)
+        {
+            GameManager.main.UpgradeMainGun();
+        }
+        else if (effect.Type == PickupEffectType.SideGunUpgrade)
+        {
+            GameManager.main.UpgradeSideGun();
         }
     }
 
@@ -72,5 +80,7 @@ public class PickupEffect
 public enum PickupEffectType
 {
     IncreaseBubbleFireRate,
-    NextLevel
+    NextLevel,
+    MainGunUpgrade,
+    SideGunUpgrade
 }

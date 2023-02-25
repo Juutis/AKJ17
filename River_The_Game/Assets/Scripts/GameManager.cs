@@ -34,6 +34,16 @@ public class GameManager : MonoBehaviour
         shooting.IncreaseFireRate(increase);
     }
 
+    public void UpgradeMainGun()
+    {
+        shooting.UpgradeMainGun();
+    }
+
+    public void UpgradeSideGun()
+    {
+        shooting.UpgradeSideGun();
+    }
+
     public void GameOver()
     {
         Debug.Log("Game over!");

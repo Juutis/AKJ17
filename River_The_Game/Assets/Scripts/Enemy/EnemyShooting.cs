@@ -41,6 +41,10 @@ public class EnemyShooting : MonoBehaviour
     private float initialShootDelay = 2f; // wait a second before starting to shoot
     private List<Vector2> bulletDirections = new();
 
+    public float FireDelay = 0.0f;
+
+    private EnemyAnimator anim;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -73,6 +77,8 @@ public class EnemyShooting : MonoBehaviour
         {
             direction = direction.normalized;
         }
+
+        anim = GetComponentInChildren<EnemyAnimator>();
     }
 
     // Update is called once per frame
@@ -90,11 +96,9 @@ public class EnemyShooting : MonoBehaviour
 
         if (type == ShootingType.ConstantDirection)
         {
-            Vector3 dir = new Vector3(direction.x, direction.y, 0);
             lastShot = Time.time;
-            GameObject bullet = Instantiate(bulletPrefab);
-            bullet.transform.position = transform.position + dir;
-            bullet.GetComponent<Bullet>().Initialize(dir);
+            Invoke("Fire", FireDelay);
+            anim.Shoot();
         }
         else if (type == ShootingType.OnPlayerY)
         {
@@ -102,17 +106,41 @@ public class EnemyShooting : MonoBehaviour
             if (isCloseToPlayerY)
             {
                 lastShot = Time.time;
-                GameObject bullet = Instantiate(bulletPrefab);
-                bullet.transform.position = transform.position + Vector3.left;
-                bullet.GetComponent<Bullet>().Initialize(Vector3.left);
+                Invoke("Fire", FireDelay);
+                anim.Shoot();
             }
         }
         else if (type == ShootingType.Omnidirectional || type == ShootingType.Spread)
         {
             foreach(Vector2 dir2 in bulletDirections)
             {
-                Vector3 dir = new Vector3(dir2.x, dir2.y, 0);
                 lastShot = Time.time;
+                Invoke("Fire", FireDelay);
+                anim.Shoot();
+            }
+        }
+    }
+
+    public void Fire()
+    {
+        if (type == ShootingType.ConstantDirection)
+        {
+            Vector3 dir = new Vector3(direction.x, direction.y, 0);
+            GameObject bullet = Instantiate(bulletPrefab);
+            bullet.transform.position = transform.position + dir;
+            bullet.GetComponent<Bullet>().Initialize(dir);
+        }
+        else if (type == ShootingType.OnPlayerY)
+        {
+            GameObject bullet = Instantiate(bulletPrefab);
+            bullet.transform.position = transform.position + Vector3.left;
+            bullet.GetComponent<Bullet>().Initialize(Vector3.left);
+        }
+        else if (type == ShootingType.Omnidirectional || type == ShootingType.Spread)
+        {
+            foreach(Vector2 dir2 in bulletDirections)
+            {
+                Vector3 dir = new Vector3(dir2.x, dir2.y, 0);
                 GameObject bullet = Instantiate(bulletPrefab);
                 bullet.transform.position = transform.position + dir;
                 bullet.GetComponent<Bullet>().Initialize(dir);

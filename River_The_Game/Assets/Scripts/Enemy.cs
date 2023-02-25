@@ -21,6 +21,7 @@ public class Enemy : MonoBehaviour
     private Vector3 velocity;
     [SerializeField]
     private ParticleSystem deathEffect;
+    private EnemyAnimator anim;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +30,7 @@ public class Enemy : MonoBehaviour
         rigidBody = GetComponent<Rigidbody2D>();
         movement = GetComponent<EnemyMovement>();
         Alive = true;
+        anim = GetComponentInChildren<EnemyAnimator>();
     }
 
     // Update is called once per frame
@@ -80,6 +82,10 @@ public class Enemy : MonoBehaviour
         {
             var fx = Instantiate(deathEffect);
             fx.transform.position = transform.position;
+        }
+        if (anim != null)
+        {
+            anim.Disable();
         }
     }
 

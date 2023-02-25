@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/JumpPrototype/JumpPrototype.unity
     guid: a8aaba4e023236d44bc102aff4dfeeba
   m_configObjects: {}

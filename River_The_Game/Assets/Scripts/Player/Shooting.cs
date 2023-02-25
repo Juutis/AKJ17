@@ -36,6 +36,7 @@ public class Shooting : MonoBehaviour
             lastShot = Time.time;
             GameObject bullet = Instantiate(bulletPrefab);
             bullet.transform.position = transform.position + Vector3.right;
+            bullet.GetComponent<Bullet>().Initialize(Vector3.right);
         }
     }
 

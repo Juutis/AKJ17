@@ -17,6 +17,7 @@ public class Bullet : MonoBehaviour
     private bool isAlive = true;
     private bool floatWobble = false;
     private float startWobble;
+    private Vector3 dir;
 
     private Rigidbody2D rbody;
 
@@ -27,13 +28,18 @@ public class Bullet : MonoBehaviour
         rbody = GetComponent<Rigidbody2D>();
     }
 
+    public void Initialize(Vector3 direction)
+    {
+        dir = direction;
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {
         if (isAlive)
         {
             // transform.position = transform.position + Vector3.right * speed * Time.deltaTime;
-            rbody.velocity = Vector3.right * speed;
+            rbody.velocity = dir * speed;
         }
         else if (!isAlive && floatUp)
         {

@@ -175,9 +175,7 @@ MonoBehaviour:
   flashOutDuration: 0.1
   flashColor: {r: 1, g: 0.13679248, b: 0.13679248, a: 0.59607846}
   spritesToFlash:
-  - {fileID: 2078066003043746779}
-  - {fileID: 6214217801442810838}
-  - {fileID: 9008887860488813902}
+  - {fileID: 630944229683710313}
 --- !u!1 &4819675833174452295
 GameObject:
   m_ObjectHideFlags: 0
@@ -558,6 +556,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1afd75a3a4eb55a478ebdb67f036388e, type: 3}
+--- !u!212 &630944229683710313 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 404667957329250183, guid: 1afd75a3a4eb55a478ebdb67f036388e, type: 3}
+  m_PrefabInstance: {fileID: 962709514404400878}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1669388267443453505 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1906958861732769967, guid: 1afd75a3a4eb55a478ebdb67f036388e, type: 3}

@@ -15,7 +15,7 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private Sprite deathSprite;
 
-    public bool Alive;
+    public bool Alive = true;
     private EnemyMovement movement;
     private Vector3 lastPosition;
     private Vector3 velocity;

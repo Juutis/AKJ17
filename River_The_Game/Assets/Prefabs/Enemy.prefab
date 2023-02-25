@@ -340,6 +340,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 10
   deathSprite: {fileID: 910424259, guid: 835384072d073b54bb6154132d9c7acd, type: 3}
+  Alive: 1
 --- !u!50 &7646996553788341365
 Rigidbody2D:
   serializedVersion: 4

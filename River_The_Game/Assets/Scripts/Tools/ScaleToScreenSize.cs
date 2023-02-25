@@ -15,7 +15,18 @@ public class ScaleToScreenSize : MonoBehaviour
     public void ResizeSpriteToScreen()
     {
         if (sr == null) return;
+        if (Camera.main.orthographic)
+        {
+            ResizeWithOrthographicCamera();
+        }
+        else
+        {
+            ResizeWithPerspectiveCamera();
+        }
+    }
 
+    private void ResizeWithOrthographicCamera()
+    {
         float width = sr.sprite.bounds.size.x;
         float height = sr.sprite.bounds.size.y;
 
@@ -27,6 +38,15 @@ public class ScaleToScreenSize : MonoBehaviour
         scale.y = scaleY ? worldScreenHeight / height : scale.y;
 
         transform.localScale = scale;
+    }
+    private void ResizeWithPerspectiveCamera()
+    {
+        float spriteHeight = sr.sprite.bounds.size.y;
+        float spriteWidth = sr.sprite.bounds.size.x;
+        float distance = transform.position.z - Camera.main.transform.position.z;
+        float screenHeight = 2 * Mathf.Tan(Camera.main.fieldOfView * Mathf.Deg2Rad / 2) * distance;
+        float screenWidth = screenHeight * Camera.main.aspect;
+        transform.localScale = new Vector3(screenWidth / spriteWidth, screenHeight / spriteWidth, 1);
     }
 
 }

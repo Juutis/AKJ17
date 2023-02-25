@@ -25,23 +25,29 @@ public class PlayerMovement : MonoBehaviour
     private bool isAboveWater = false;
     private bool isFalling = false;
 
-    private void Update() {
+    private void Update()
+    {
         CollectInput();
         CheckAboveWaterStatus();
-        if (isFalling) {
+        if (isFalling)
+        {
             fallSpeedTimer += Time.deltaTime;
         }
         FaceDirection();
     }
 
-    private void CheckAboveWaterStatus() {
+    private void CheckAboveWaterStatus()
+    {
         isAboveWater = transform.position.y > waterSurface.position.y;
-        if (!isFalling && isAboveWater) {
+        if (!isFalling && isAboveWater)
+        {
             isFalling = true;
             fallSpeedTimer = 0f;
         }
-        if (isFalling) {
-            if (fallSpeedTimer >= fallSpeedDuration && transform.position.y < backToWaterPoint.position.y) {
+        if (isFalling)
+        {
+            if (fallSpeedTimer >= fallSpeedDuration && transform.position.y < backToWaterPoint.position.y)
+            {
                 isFalling = false;
             }
         }
@@ -49,32 +55,45 @@ public class PlayerMovement : MonoBehaviour
 
     private void FaceDirection()
     {
-        Vector2 dir = rb.velocity;
-        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        if (isAboveWater)
+        {
+            Vector2 dir = rb.velocity;
+            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        }
+        else
+        {
+            transform.rotation = Quaternion.identity;
+        }
+
     }
 
 
-    private void CollectInput() {
+    private void CollectInput()
+    {
         input.x = Input.GetAxis("Horizontal");
         input.y = Input.GetAxis("Vertical");
     }
 
     private void FixedUpdate()
     {
-        if (!isAboveWater && !isFalling) {
+        if (!isAboveWater && !isFalling)
+        {
             ApplyMovement();
         }
-        if (isFalling) {
+        if (isFalling)
+        {
             Fall();
         }
     }
 
-    private void ApplyMovement() {
+    private void ApplyMovement()
+    {
         rb.velocity = input * speed * Time.deltaTime;
     }
 
-    public void Fall() {
+    public void Fall()
+    {
         Vector2 velocity = rb.velocity;
         velocity.y -= Mathf.Lerp(fallSpeed, 0f, fallSpeedTimer / fallSpeedDuration) * Time.deltaTime;
         rb.velocity = velocity;

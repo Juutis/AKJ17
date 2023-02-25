@@ -378,9 +378,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 726678586496482181, guid: 9226bc4a795c1ab4ca1706472af48dfc, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1099996529994894253, guid: 9226bc4a795c1ab4ca1706472af48dfc, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2685404628777862091, guid: 9226bc4a795c1ab4ca1706472af48dfc, type: 3}
       propertyPath: m_Name
       value: world
+      objectReference: {fileID: 0}
+    - target: {fileID: 4232973859939202692, guid: 9226bc4a795c1ab4ca1706472af48dfc, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4761602132370752295, guid: 9226bc4a795c1ab4ca1706472af48dfc, type: 3}
       propertyPath: m_Creator
@@ -393,6 +405,10 @@ PrefabInstance:
     - target: {fileID: 4996340942489303826, guid: 9226bc4a795c1ab4ca1706472af48dfc, type: 3}
       propertyPath: scenes.Array.size
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7300139062873261772, guid: 9226bc4a795c1ab4ca1706472af48dfc, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8009197286092437475, guid: 9226bc4a795c1ab4ca1706472af48dfc, type: 3}
       propertyPath: m_RootOrder

@@ -11,16 +11,25 @@ public class WorldMovement : MonoBehaviour
 
     private bool isMoving = false;
 
-    private void Start() {
+    private void Start()
+    {
         StartMoving();
     }
 
-    public void StartMoving() {
+    public void StartMoving()
+    {
         isMoving = true;
     }
 
-    void Update() {
-        if (!isMoving) {
+    public void StopMoving()
+    {
+        isMoving = false;
+    }
+
+    void Update()
+    {
+        if (!isMoving)
+        {
             return;
         }
         Vector3 position = target.position;

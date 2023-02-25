@@ -13,6 +13,8 @@ public class Shooting : MonoBehaviour
     private float lastShot;
     private bool isShooting = false;
 
+    private bool allowedToShoot = true;
+
     public void IncreaseFireRate(int increase)
     {
         Debug.Log($"Firerate: {shootingRate} -> {shootingRate + increase}");
@@ -25,9 +27,22 @@ public class Shooting : MonoBehaviour
         lastShot = Time.time;
     }
 
+    public void DisableControls()
+    {
+        allowedToShoot = false;
+    }
+    public void EnableControls()
+    {
+        allowedToShoot = true;
+    }
+
     // Update is called once per frame
     void Update()
     {
+        if (!allowedToShoot)
+        {
+            return;
+        }
         shootingDelay = 60f / shootingRate;
         isShooting = Input.GetKey(KeyCode.Space);
 

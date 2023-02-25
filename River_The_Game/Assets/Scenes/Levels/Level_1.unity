@@ -382,13 +382,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: world
       objectReference: {fileID: 0}
+    - target: {fileID: 4403410839228172394, guid: 9226bc4a795c1ab4ca1706472af48dfc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 52.8
+      objectReference: {fileID: 0}
     - target: {fileID: 4761602132370752295, guid: 9226bc4a795c1ab4ca1706472af48dfc, type: 3}
       propertyPath: m_Creator
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4996340942489303826, guid: 9226bc4a795c1ab4ca1706472af48dfc, type: 3}
-      propertyPath: scenes.Array.size
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8009197286092437475, guid: 9226bc4a795c1ab4ca1706472af48dfc, type: 3}
       propertyPath: m_RootOrder

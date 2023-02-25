@@ -22,6 +22,8 @@ public class WorldManager : MonoBehaviour
     [SerializeField]
     private ScaleToScreenSize bgScaler;
 
+    private WorldMovement worldMovement;
+
     private void Awake()
     {
         main = this;
@@ -44,9 +46,14 @@ public class WorldManager : MonoBehaviour
     public Transform PlayerStart { get { return playerStart; } }
     public void Start()
     {
+        worldMovement = GetComponent<WorldMovement>();
         SetupVisuals();
     }
 
+    public void StopWorldMovement()
+    {
+        worldMovement.StopMoving();
+    }
     private void SetupVisuals()
     {
         waterBackground.sprite = level.WaterBackground.Sprite;

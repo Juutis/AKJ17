@@ -14,17 +14,21 @@ public class EnemyMovement : MonoBehaviour
     private float startTime;
     private Vector3 startPos;
     private float dir = 1;
+    private bool movementEnabled;
 
     // Start is called before the first frame update
     void Start()
     {
         startTime = Time.time;
         startPos = transform.localPosition;
+        movementEnabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!movementEnabled) return;
+
         float fromStart = Time.time - startTime;
         if (type == MovementType.Sin)
         {
@@ -46,6 +50,14 @@ public class EnemyMovement : MonoBehaviour
             // Move forward
             // Hit a trigger at the end of view port?
             // Go down (and/or up?) and lerp forward movement speed X into -X
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "EnemyActivator")
+        {
+            movementEnabled = true;
         }
     }
 }

@@ -11,16 +11,20 @@ public class FollowEnemyMovement : MonoBehaviour
     private float yMovementSpeed;
 
     private Transform player;
+    private bool movementEnabled;
 
     // Start is called before the first frame update
     void Start()
     {
         player = FindObjectOfType<PlayerMovement>().transform;
+        movementEnabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!movementEnabled) return;
+
         bool isInTargetXPos = transform.position.x < followPhaseXPos;
         bool isNotCloseToPlayerY = transform.position.y > player.position.y + 0.1f || transform.position.y < player.position.y - 0.1f;
         if (isInTargetXPos)
@@ -32,6 +36,15 @@ public class FollowEnemyMovement : MonoBehaviour
                 yPos = transform.position.y + yMovementSpeed * yDir * Time.deltaTime;
             }
             transform.position = new Vector3(followPhaseXPos, yPos, transform.position.z);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log($"{transform.name} triggered");
+        if (collision.tag == "EnemyActivator")
+        {
+            movementEnabled = true;
         }
     }
 }

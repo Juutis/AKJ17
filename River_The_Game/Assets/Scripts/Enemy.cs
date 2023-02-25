@@ -15,7 +15,7 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private Sprite deathSprite;
 
-    private bool alive;
+    public bool Alive;
     private EnemyMovement movement;
     private Vector3 lastPosition;
     private Vector3 velocity;
@@ -31,7 +31,7 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!alive)
+        if (!Alive && velocity.y < 0)
         {
             var targetDir = rigidBody.velocity;
             var diff = Vector2.SignedAngle(-transform.right, targetDir);
@@ -62,7 +62,7 @@ public class Enemy : MonoBehaviour
         {
             renderer.sprite = deathSprite;
         }
-        alive = false;
+        Alive = false;
         rigidBody.gravityScale = 1.0f;
         movement.enabled = false;
         rigidBody.velocity = velocity;

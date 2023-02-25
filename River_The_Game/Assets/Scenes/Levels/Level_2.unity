@@ -203,7 +203,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.05575826, g: 0.066037714, b: 0.055875115, a: 1}
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -226,8 +226,8 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 80
-  orthographic: 0
+  field of view: 34
+  orthographic: 1
   orthographic size: 8.125
   m_Depth: -1
   m_CullingMask:
@@ -390,6 +390,14 @@ PrefabInstance:
       propertyPath: scenes.Array.size
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4996340942489303826, guid: 9226bc4a795c1ab4ca1706472af48dfc, type: 3}
+      propertyPath: scenes.Array.data[0]
+      value: 
+      objectReference: {fileID: 1814160469746367767, guid: 138dbc60b20929a43968e2c0b1dcc0cf, type: 3}
+    - target: {fileID: 4996340942489303826, guid: 9226bc4a795c1ab4ca1706472af48dfc, type: 3}
+      propertyPath: scenes.Array.data[1]
+      value: 
+      objectReference: {fileID: 1814160469746367767, guid: 03766136332c1084ab77233aee6bd354, type: 3}
     - target: {fileID: 8009197286092437475, guid: 9226bc4a795c1ab4ca1706472af48dfc, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -433,10 +441,6 @@ PrefabInstance:
     - target: {fileID: 8009197286092437475, guid: 9226bc4a795c1ab4ca1706472af48dfc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8692951322713163828, guid: 9226bc4a795c1ab4ca1706472af48dfc, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -7.92
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

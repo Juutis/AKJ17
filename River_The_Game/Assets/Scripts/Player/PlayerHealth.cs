@@ -8,6 +8,7 @@ public class PlayerHealth : MonoBehaviour
     private int startingHealth = 3;
     private int currentHealth = 3;
 
+    private Shooting shooting;
     private PlayerMovement playerMovement;
     private Collider2D playerCollider;
 
@@ -25,6 +26,7 @@ public class PlayerHealth : MonoBehaviour
         spriteFlasher = GetComponent<SpriteFlasher>();
         currentHealth = startingHealth;
         playerMovement = GetComponent<PlayerMovement>();
+        shooting = GetComponent<Shooting>();
         playerCollider = GetComponent<Collider2D>();
     }
     public void TakeDamage(int damage = 1)
@@ -39,6 +41,7 @@ public class PlayerHealth : MonoBehaviour
 
         playerMovement.Spawn();
         playerMovement.DisableControls();
+        shooting.DisableControls();
         isInvulnerable = true;
         invulnerabilityTimer = 0f;
         spriteFlasher.StartFlashing();
@@ -53,6 +56,7 @@ public class PlayerHealth : MonoBehaviour
             {
                 spriteFlasher.StopFlashing();
                 playerMovement.EnableControls();
+                shooting.EnableControls();
             }
         }
     }

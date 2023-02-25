@@ -28,6 +28,10 @@ public class Pickup : MonoBehaviour
         {
             GameManager.main.IncreaseBubbleFireRate(effect.Value);
         }
+        if (effect.Type == PickupEffectType.NextLevel)
+        {
+            GameManager.main.NextLevel();
+        }
     }
 
     public void Kill()
@@ -59,7 +63,7 @@ public class PickupEffect
     private int value = 1;
     public int Value { get { return value; } }
 
-    public string ToString()
+    public override string ToString()
     {
         return $"[{type}]:[{value}]";
     }
@@ -67,5 +71,6 @@ public class PickupEffect
 
 public enum PickupEffectType
 {
-    IncreaseBubbleFireRate
+    IncreaseBubbleFireRate,
+    NextLevel
 }

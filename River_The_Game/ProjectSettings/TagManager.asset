@@ -6,6 +6,7 @@ TagManager:
   tags:
   - EnemyActivator
   - Enemy
+  - LevelManager
   layers:
   - Default
   - TransparentFX
@@ -18,9 +19,9 @@ TagManager:
   - Pickup
   - EnemyActivators
   - Enemy
-  - 
-  - 
-  - 
+  - PlayerBullet
+  - EnemyBullet
+  - ConfineTrigger
   - 
   - 
   - 

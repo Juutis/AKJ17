@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -15,7 +16,13 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
 
     [SerializeField]
+    private TMPro.TextMeshProUGUI txtDebug;
+
+    [SerializeField]
     private Transform waterSurface;
+
+    [SerializeField]
+    private float startFallingBuffer = 1f;
 
     [SerializeField]
     private Transform backToWaterPoint;
@@ -36,6 +43,10 @@ public class PlayerMovement : MonoBehaviour
             fallSpeedTimer += Time.deltaTime;
         }
         FaceDirection();
+        if (txtDebug != null)
+        {
+            txtDebug.text = $"[isFalling: {isFalling}]\n[isAboveWater: {isAboveWater}] [velY: {rb.velocity.y}]\n[fallSpeedTimer: {fallSpeedTimer}]";
+        }
     }
 
     private void Start()
@@ -68,7 +79,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if (isFalling)
         {
-            if (fallSpeedTimer >= fallSpeedDuration && transform.position.y < backToWaterPoint.position.y)
+            if (fallSpeedTimer >= fallSpeedDuration)
             {
                 isFalling = false;
             }
@@ -103,7 +114,7 @@ public class PlayerMovement : MonoBehaviour
         {
             return;
         }
-        if (!isAboveWater && !isFalling)
+        if (!isAboveWater)
         {
             ApplyMovement();
         }
@@ -121,7 +132,8 @@ public class PlayerMovement : MonoBehaviour
     public void Fall()
     {
         Vector2 velocity = rb.velocity;
-        velocity.y -= Mathf.Lerp(fallSpeed, 0f, fallSpeedTimer / fallSpeedDuration) * Time.deltaTime;
+        velocity.y -= Mathf.Lerp(0f, fallSpeed, fallSpeedTimer / fallSpeedDuration) * Time.deltaTime;
+        //velocity.y -= fallSpeed * Time.deltaTime;
         rb.velocity = velocity;
     }
 }

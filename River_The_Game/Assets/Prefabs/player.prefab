@@ -37,7 +37,7 @@ Transform:
   m_Children:
   - {fileID: 2607329051784765544}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7711841555263173951
 MonoBehaviour:
@@ -52,10 +52,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 400
-  fallSpeed: 400
-  fallSpeedDuration: 0.5
+  fallSpeed: 100
+  fallSpeedDuration: 1.8
   rb: {fileID: 5627545110533612879}
+  txtDebug: {fileID: 0}
   waterSurface: {fileID: 0}
+  startFallingBuffer: 1
   backToWaterPoint: {fileID: 0}
 --- !u!50 &5627545110533612879
 Rigidbody2D:

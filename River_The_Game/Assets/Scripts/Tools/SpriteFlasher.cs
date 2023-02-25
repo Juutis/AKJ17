@@ -17,22 +17,43 @@ public class SpriteFlasher : MonoBehaviour
     private float flashTimer = 0f;
 
     [SerializeField]
+    private bool hasDuration = false;
+    [SerializeField]
+    private float flashDuration = 0.3f;
+    private float totalFlashTimer = 0f;
+
+    [SerializeField]
     private Color flashColor;
 
     [SerializeField]
+    private bool allChildSpritesFlash = false;
+
+    [SerializeField]
     private List<SpriteRenderer> spritesToFlash = new List<SpriteRenderer>();
+
     private List<FlashingSprite> flashingSprites = new List<FlashingSprite>();
 
     private void Start()
     {
-        foreach (SpriteRenderer sprite in spritesToFlash)
+        if (allChildSpritesFlash)
         {
-            flashingSprites.Add(new FlashingSprite(sprite));
+            foreach (SpriteRenderer sprite in GetComponentsInChildren<SpriteRenderer>())
+            {
+                flashingSprites.Add(new FlashingSprite(sprite));
+            }
+        }
+        else
+        {
+            foreach (SpriteRenderer sprite in spritesToFlash)
+            {
+                flashingSprites.Add(new FlashingSprite(sprite));
+            }
         }
     }
 
     public void StartFlashing()
     {
+        totalFlashTimer = 0f;
         isFlashing = true;
         flashTimer = 0f;
         flashingIn = true;
@@ -40,6 +61,7 @@ public class SpriteFlasher : MonoBehaviour
 
     public void StopFlashing()
     {
+        totalFlashTimer = 0f;
         flashingIn = false;
         flashingOut = false;
         BackToOriginalColor();
@@ -55,6 +77,14 @@ public class SpriteFlasher : MonoBehaviour
 
     private void HandleFlashing()
     {
+        if (hasDuration)
+        {
+            totalFlashTimer += Time.deltaTime;
+            if (totalFlashTimer > flashDuration)
+            {
+                StopFlashing();
+            }
+        }
         if (flashingIn || flashingOut)
         {
             flashTimer += Time.deltaTime;

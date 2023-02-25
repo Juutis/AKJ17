@@ -21,6 +21,7 @@ public class Enemy : MonoBehaviour
     private Vector3 velocity;
     [SerializeField]
     private ParticleSystem deathEffect;
+    private SpriteFlasher spriteFlasher;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +29,7 @@ public class Enemy : MonoBehaviour
         renderer = GetComponentInChildren<SpriteRenderer>();
         rigidBody = GetComponent<Rigidbody2D>();
         movement = GetComponent<EnemyMovement>();
+        spriteFlasher = GetComponent<SpriteFlasher>();
         Alive = true;
     }
 
@@ -56,10 +58,22 @@ public class Enemy : MonoBehaviour
         {
             return;
         }
+
         hp -= damage;
         if (hp <= 0)
         {
+            if (spriteFlasher != null)
+            {
+                spriteFlasher.StopFlashing();
+            }
             Kill();
+        }
+        else
+        {
+            if (spriteFlasher != null)
+            {
+                spriteFlasher.StartFlashing();
+            }
         }
     }
 

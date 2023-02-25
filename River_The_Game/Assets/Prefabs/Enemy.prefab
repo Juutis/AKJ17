@@ -338,8 +338,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6324a08994c1d1459d82990d006a356, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 10
+  hp: 1
   deathSprite: {fileID: 910424259, guid: 835384072d073b54bb6154132d9c7acd, type: 3}
+  Alive: 0
+  deathEffect: {fileID: 637044843549356198, guid: ac5c7986a185a4f4ca81b72f664793bf, type: 3}
 --- !u!50 &7646996553788341365
 Rigidbody2D:
   serializedVersion: 4

@@ -15,10 +15,12 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private Sprite deathSprite;
 
-    public bool Alive;
+    public bool Alive = true;
     private EnemyMovement movement;
     private Vector3 lastPosition;
     private Vector3 velocity;
+    [SerializeField]
+    private ParticleSystem deathEffect;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +28,7 @@ public class Enemy : MonoBehaviour
         renderer = GetComponentInChildren<SpriteRenderer>();
         rigidBody = GetComponent<Rigidbody2D>();
         movement = GetComponent<EnemyMovement>();
+        Alive = true;
     }
 
     // Update is called once per frame
@@ -49,6 +52,10 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        if (!Alive)
+        {
+            return;
+        }
         hp -= damage;
         if (hp <= 0)
         {
@@ -66,6 +73,11 @@ public class Enemy : MonoBehaviour
         rigidBody.gravityScale = 1.0f;
         movement.enabled = false;
         rigidBody.velocity = velocity;
+        if (deathEffect != null)
+        {
+            var fx = Instantiate(deathEffect);
+            fx.transform.position = transform.position;
+        }
     }
 
     public void RegisterGroup(EnemyGroup group)

@@ -26,12 +26,20 @@ public class EnemyShooting : MonoBehaviour
     [SerializeField]
     private float directionCount;
 
+    [Header("Spread type")]
+    [SerializeField]
+    private float bulletCount;
+    [SerializeField]
+    private float spreadAngle;
+    [SerializeField]
+    private Vector2 midDirection;
+
     private float lastShot;
     private float shootDelay;
     private Transform player;
     private bool shootingEnabled;
     private float initialShootDelay = 2f; // wait a second before starting to shoot
-    private List<Vector2> omniDirections = new();
+    private List<Vector2> bulletDirections = new();
 
     // Start is called before the first frame update
     void Start()
@@ -46,7 +54,19 @@ public class EnemyShooting : MonoBehaviour
             float angleBetweenDirs = 360f / directionCount;
             for (int i = 0; i < directionCount; i++)
             {
-                omniDirections.Add(Quaternion.Euler(0, 0, angleBetweenDirs * i) * Vector2.left);
+                bulletDirections.Add(Quaternion.Euler(0, 0, angleBetweenDirs * i) * Vector2.left);
+            }
+        }
+        else if (type == ShootingType.Spread)
+        {
+            float angleFromMid = spreadAngle / 2f;
+            float angleBetweenDirs = spreadAngle / (bulletCount-1);
+            Vector2 startDir = Quaternion.Euler(0, 0, -angleFromMid) * midDirection;
+            Debug.Log($"Start: {startDir}, mid: {midDirection}");
+            for (int i = 0; i < bulletCount; i++)
+            {
+                bulletDirections.Add(Quaternion.Euler(0, 0, angleBetweenDirs * i) * startDir);
+                Debug.Log($"Dir: {Quaternion.Euler(0, 0, angleBetweenDirs * i) * startDir}");
             }
         }
         else if (type == ShootingType.ConstantDirection)
@@ -87,9 +107,9 @@ public class EnemyShooting : MonoBehaviour
                 bullet.GetComponent<Bullet>().Initialize(Vector3.left);
             }
         }
-        else if (type == ShootingType.Omnidirectional)
+        else if (type == ShootingType.Omnidirectional || type == ShootingType.Spread)
         {
-            foreach(Vector2 dir2 in omniDirections)
+            foreach(Vector2 dir2 in bulletDirections)
             {
                 Vector3 dir = new Vector3(dir2.x, dir2.y, 0);
                 lastShot = Time.time;
@@ -114,5 +134,6 @@ enum ShootingType
 {
     OnPlayerY,
     ConstantDirection,
-    Omnidirectional
+    Omnidirectional,
+    Spread
 }

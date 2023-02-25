@@ -38,6 +38,10 @@ public class WorldManager : MonoBehaviour
         }
     }
 
+    [SerializeField]
+    private Transform playerStart;
+
+    public Transform PlayerStart { get { return playerStart; } }
     public void Start()
     {
         SetupVisuals();

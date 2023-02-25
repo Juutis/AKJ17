@@ -17,6 +17,10 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField]
     private float invulnerabilityLength = 0.5f;
     private float invulnerabilityTimer = 0f;
+    [SerializeField]
+    private float controlLossDuration = 0.5f;
+    private bool controlsLost = false;
+    private float controlLossTimer = 0f;
 
 
     private SpriteFlasher spriteFlasher;
@@ -31,6 +35,10 @@ public class PlayerHealth : MonoBehaviour
     }
     public void TakeDamage(int damage = 1)
     {
+        if (isInvulnerable)
+        {
+            return;
+        }
         Debug.Log($"[PlayerHealth]: Hp {currentHealth} -> {currentHealth - damage}");
         currentHealth -= damage;
         if (currentHealth <= 0)
@@ -40,23 +48,46 @@ public class PlayerHealth : MonoBehaviour
         }
 
         playerMovement.Spawn();
-        playerMovement.DisableControls();
-        shooting.DisableControls();
+        LoseControls();
+
         isInvulnerable = true;
         invulnerabilityTimer = 0f;
         spriteFlasher.StartFlashing();
     }
 
+    private void LoseControls()
+    {
+        playerMovement.DisableControls();
+        shooting.DisableControls();
+        controlLossTimer = 0f;
+        controlsLost = true;
+    }
+
+    private void GainControls()
+    {
+        playerMovement.EnableControls();
+        shooting.EnableControls();
+        controlLossTimer = 0f;
+        controlsLost = false;
+    }
+
     private void Update()
     {
+        if (controlsLost)
+        {
+            controlLossTimer += Time.deltaTime;
+            if (controlLossTimer >= controlLossDuration)
+            {
+                GainControls();
+            }
+        }
         if (isInvulnerable)
         {
             invulnerabilityTimer += Time.deltaTime;
             if (invulnerabilityTimer > invulnerabilityLength)
             {
                 spriteFlasher.StopFlashing();
-                playerMovement.EnableControls();
-                shooting.EnableControls();
+                isInvulnerable = false;
             }
         }
     }

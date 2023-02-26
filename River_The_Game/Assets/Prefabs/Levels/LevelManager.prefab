@@ -1083,6 +1083,8 @@ MonoBehaviour:
   - {fileID: 1814160469746367767, guid: 138dbc60b20929a43968e2c0b1dcc0cf, type: 3}
   - {fileID: 1814160469746367767, guid: 03766136332c1084ab77233aee6bd354, type: 3}
   - {fileID: 1814160469746367767, guid: a7d7eb05cc924394fbebf6701a9f5302, type: 3}
+  - {fileID: 1814160469746367767, guid: 8312f86ea2c866a4aafed21ad9b6cc5b, type: 3}
+  - {fileID: 1814160469746367767, guid: 837100e412cb1cd48a2d9ffdf4077a09, type: 3}
   debugLevelIndex: 0
   musicManager: {fileID: 8648482029323741604}
 --- !u!114 &8648482029323741604

@@ -17,6 +17,8 @@ public class DamageArea : MonoBehaviour
     {
         player = FindObjectOfType<PlayerMovement>().GetComponent<PlayerHealth>();
         Invoke("Die", duration);
+        var parent = GameObject.FindGameObjectWithTag("MovingWorld");
+        transform.parent = parent.transform;
     }
 
     // Update is called once per frame

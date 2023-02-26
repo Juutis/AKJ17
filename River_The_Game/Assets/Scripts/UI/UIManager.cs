@@ -13,6 +13,59 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private UIHealth health;
 
+    [SerializeField]
+    private Transform uiMenuContainer;
+
+    [SerializeField]
+    private UIMenuScreen menuScreenPrefab;
+    [SerializeField]
+    private MenuScreen pauseMenu;
+    [SerializeField]
+    private MenuScreen gameOverMenu;
+
+    private UIMenuScreen menuScreen;
+
+    private bool menuIsOpen = false;
+
+    private UIMenuScreen InitMenu()
+    {
+        if (menuScreen == null)
+        {
+            menuScreen = Instantiate(menuScreenPrefab, uiMenuContainer);
+        }
+        return menuScreen;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKey(KeyCode.P))
+        {
+            ShowPauseMenu();
+        }
+    }
+
+    public void ShowGameOverMenu()
+    {
+        UIMenuScreen screen = InitMenu();
+        screen.Initialize(gameOverMenu);
+        screen.Open();
+        menuIsOpen = true;
+    }
+
+    public void ShowPauseMenu()
+    {
+
+        if (menuIsOpen)
+        {
+            return;
+        }
+        UIMenuScreen screen = InitMenu();
+        screen.Initialize(pauseMenu);
+        screen.Open();
+        menuIsOpen = true;
+    }
+
+
     public void SetLives(int value)
     {
         health.SetLives(value);
@@ -26,5 +79,10 @@ public class UIManager : MonoBehaviour
     public void GainLife()
     {
         health.GainLife();
+    }
+
+    public void MenuWasClosed()
+    {
+        menuIsOpen = false;
     }
 }

@@ -9,7 +9,10 @@ public class SoundManager : MonoBehaviour
 
     private void Awake()
     {
-        main = this;
+        if (main == null)
+        {
+            main = this;
+        }
     }
 
     [SerializeField]
@@ -100,6 +103,10 @@ public class GameSound
 
         private AudioSource addNewToPool()
         {
+            if (originalAudioSource == null)
+            {
+
+            }
             AudioSource newSource = GameObject.Instantiate(originalAudioSource, originalAudioSource.transform.parent);
             audioSources.Add(newSource);
             return newSource;

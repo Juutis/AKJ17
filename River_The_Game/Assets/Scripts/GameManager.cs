@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     private LevelManager levelManagerPrefab;
     [SerializeField]
     private PlayerHealth playerHealth;
+    private PlayerMovement playerMovement;
 
     private PlayerUpgrades playerUpgrades;
     public int MainGunUpgrades => playerUpgrades.MainGunUpgrades;
@@ -25,6 +26,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        playerMovement = playerHealth.GetComponent<PlayerMovement>();
         GameObject levelManagerObject = GameObject.FindGameObjectWithTag("LevelManager");
         if (levelManagerObject == null)
         {
@@ -58,6 +60,32 @@ public class GameManager : MonoBehaviour
         playerUpgrades.SideGunUpgrades++;
     }
 
+    public void OpenMainMenu()
+    {
+        levelManager.MainMenu();
+        Time.timeScale = 1f;
+    }
+
+    public void PauseGame()
+    {
+        playerMovement.DisableControls();
+        shooting.DisableControls();
+        Time.timeScale = 0f;
+    }
+
+    public void ResumeGame()
+    {
+        shooting.EnableControls();
+        playerMovement.EnableControls();
+        Time.timeScale = 1f;
+    }
+
+    public void RestartGame()
+    {
+        levelManager.RestartGame();
+        Time.timeScale = 1f;
+    }
+
     public void GainLife()
     {
         playerHealth.GainLife();
@@ -79,6 +107,7 @@ public class GameManager : MonoBehaviour
         playerUpgrades.SideGunUpgrades = 0;
         playerUpgrades.ShootingRateUpgrades = 0;
         playerUpgrades.HP = 3;
+        UIManager.main.ShowGameOverMenu();
     }
 
     public void NextLevel()

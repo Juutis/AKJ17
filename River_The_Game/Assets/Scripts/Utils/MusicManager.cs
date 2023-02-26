@@ -83,7 +83,7 @@ public class MusicManager : MonoBehaviour
     {
         if (gameMusic == null)
         {
-            gameMusic = InitializeAudioSource("Normal music", gameMusicClip);
+            gameMusic = InitializeAudioSource("Game music", gameMusicClip);
         }
         if (menuMusic == null)
         {
@@ -117,6 +117,7 @@ public class MusicManager : MonoBehaviour
 
     public void CrossFade(AudioSource fadeOutSource, AudioSource fadeInSource, float durationOut, float durationIn, float volume, float targetPitch)
     {
+        fades.Clear();
         AudioFade fadeOut = new AudioFade(durationOut, 0f, fadeOutSource, targetPitch);
         AudioFade fadeIn = new AudioFade(durationIn, volume, fadeInSource, targetPitch);
         fades.Add(fadeOut);
@@ -178,10 +179,6 @@ public class AudioFade
             audioSource.volume = targetVolume;
             audioSource.pitch = targetPitch;
             IsFading = false;
-            if (audioSource.volume <= 0.01f)
-            {
-                audioSource.Pause();
-            }
         }
     }
 }

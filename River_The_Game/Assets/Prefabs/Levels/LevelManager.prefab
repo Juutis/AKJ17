@@ -842,7 +842,7 @@ MonoBehaviour:
   volumeMenu: 0.5
   volumeGame: 0.1
   crossfadeDurationOut: 2.5
-  crossfadeDurationIn: 8
+  crossfadeDurationIn: 6
   audioSourcePrefab: {fileID: 9085154514204472679, guid: 1cabc5e0cfea4dc45a9792804afb4b53, type: 3}
   isMainMenu: 1
 --- !u!114 &2625782991511813587

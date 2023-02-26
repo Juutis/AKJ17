@@ -78,7 +78,8 @@ public class Bullet : MonoBehaviour
             }
         }
 
-        if (Time.time - started >= lifeTime) {
+        if (Time.time - started >= lifeTime)
+        {
             isAlive = false;
             if (!floatUp)
             {
@@ -97,6 +98,7 @@ public class Bullet : MonoBehaviour
         if (collision.gameObject.TryGetComponent<Enemy>(out Enemy enemy))
         {
             enemy.TakeDamage(damage);
+            SoundManager.main.PlaySound(GameSoundType.HitFish);
             Kill();
         }
     }

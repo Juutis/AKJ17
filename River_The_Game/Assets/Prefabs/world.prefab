@@ -165,10 +165,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: {fileID: 11400000, guid: 5ce22762efa48234a9aa9cf9664b6b92, type: 2}
-  waterBackground: {fileID: 0}
-  waterForeground: {fileID: 0}
-  skyBackground: {fileID: 0}
-  groundBackground: {fileID: 0}
   bgScaler: {fileID: 0}
   pickupContainer: {fileID: 8478660071061703884}
   playerStart: {fileID: 3425503610938919240}

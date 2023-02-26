@@ -52,13 +52,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 400
-  fallSpeed: 100
-  fallSpeedDuration: 1.8
+  fallSpeed: 50
+  fallSpeedDuration: 0.3
   rb: {fileID: 5627545110533612879}
   txtDebug: {fileID: 0}
   waterSurface: {fileID: 0}
-  startFallingBuffer: 1
   backToWaterPoint: {fileID: 0}
+  fallBuffer: 1
 --- !u!50 &5627545110533612879
 Rigidbody2D:
   serializedVersion: 4
@@ -134,6 +134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upgradeSideGunner: 0
+  upgradeMainGunner: 0
   mainGunBulletPrefabs:
   - {fileID: 512819945521265382, guid: dd48f758a7303654ba448229831623ee, type: 3}
   - {fileID: 512819945521265382, guid: 366cd773384351a428aa05a87dcd8c75, type: 3}
@@ -158,6 +159,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 3
   invulnerabilityLength: 2
+  controlLossDuration: 0.5
 --- !u!114 &7871800620166225937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,7 +186,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flashInDuration: 0.2
   flashOutDuration: 0.1
+  hasDuration: 0
+  flashDuration: 0.3
   flashColor: {r: 1, g: 0.13679248, b: 0.13679248, a: 0.59607846}
+  allChildSpritesFlash: 0
   spritesToFlash:
   - {fileID: 630944229683710313}
 --- !u!1 &4819675833174452295

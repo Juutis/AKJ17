@@ -17,6 +17,8 @@ public class Shooting : MonoBehaviour
     private List<GameObject> sideGunBulletPrefabs;
     private GameObject currentSideGunPrefab;
 
+    private PlayerMovement playerMovement;
+
     [SerializeField]
     private float shootingBaseRate; // bullets per minute
     private float shootingDelay; // time between bullets
@@ -30,6 +32,7 @@ public class Shooting : MonoBehaviour
     private int shootingRateUpgrades = 0;
 
     private float shootingRateStep = 10f;
+    private PlayerAnimation anim;
 
     List<Vector3> sideGunnerDirs = new()
     {
@@ -62,6 +65,8 @@ public class Shooting : MonoBehaviour
     void Start()
     {
         lastShot = Time.time;
+        playerMovement = GetComponent<PlayerMovement>();
+        anim = GetComponentInChildren<PlayerAnimation>();
     }
 
     public void DisableControls()
@@ -89,7 +94,7 @@ public class Shooting : MonoBehaviour
         currentMainGunPrefab = mainGunBulletPrefabs[Mathf.Clamp(mainGunUpgrades, 0, mainGunBulletPrefabs.Count - 1)];
         currentSideGunPrefab = sideGunBulletPrefabs[Mathf.Clamp(sideGunUpgrades, 0, sideGunBulletPrefabs.Count - 1)];
 
-        if (!allowedToShoot)
+        if (!allowedToShoot || playerMovement.IsAboveWater)
         {
             return;
         }
@@ -105,6 +110,7 @@ public class Shooting : MonoBehaviour
         GameObject bullet = Instantiate(currentMainGunPrefab);
         bullet.transform.position = transform.position + Vector3.right;
         bullet.GetComponent<Bullet>().Initialize(Vector3.right);
+        anim.Shoot();
 
         if (sideGunUpgrades > 0)
         {

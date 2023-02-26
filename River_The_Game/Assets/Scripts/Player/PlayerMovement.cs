@@ -22,15 +22,16 @@ public class PlayerMovement : MonoBehaviour
     private Transform waterSurface;
 
     [SerializeField]
-    private float startFallingBuffer = 1f;
-
-    [SerializeField]
     private Transform backToWaterPoint;
 
     private Vector2 input;
 
     private bool isAboveWater = false;
+
+    public bool IsAboveWater { get { return isAboveWater; } }
     private bool isFalling = false;
+    [SerializeField]
+    private float fallBuffer = 1f;
 
     private bool isAllowedToMove = true;
 
@@ -71,7 +72,17 @@ public class PlayerMovement : MonoBehaviour
 
     private void CheckAboveWaterStatus()
     {
-        isAboveWater = transform.position.y > waterSurface.position.y;
+        if (!isAboveWater)
+        {
+            isAboveWater = transform.position.y > waterSurface.position.y;
+        }
+        if (isAboveWater)
+        {
+            if (transform.position.y < (waterSurface.position.y - fallBuffer))
+            {
+                isAboveWater = false;
+            }
+        }
         if (!isFalling && isAboveWater)
         {
             isFalling = true;

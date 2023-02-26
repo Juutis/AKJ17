@@ -67,6 +67,9 @@ public class GameManager : MonoBehaviour
     public void TakeDamage()
     {
         playerUpgrades.HP--;
+        playerUpgrades.MainGunUpgrades = Mathf.Max(0, playerUpgrades.MainGunUpgrades--);
+        playerUpgrades.SideGunUpgrades = Mathf.Max(0, playerUpgrades.SideGunUpgrades--);
+        playerUpgrades.ShootingRateUpgrades = Mathf.Max(0, playerUpgrades.ShootingRateUpgrades--);
     }
 
     public void GameOver()

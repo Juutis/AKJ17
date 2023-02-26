@@ -98,6 +98,17 @@ public class LevelManager : MonoBehaviour
         return true;
     }
 
+    public void RestartGame()
+    {
+        Scene currentScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(currentScene.name);
+    }
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("mainMenu");
+        musicManager.SwitchMusic(true);
+    }
+
     public void LoadFirstLevel()
     {
         Debug.Log("Loading first level");

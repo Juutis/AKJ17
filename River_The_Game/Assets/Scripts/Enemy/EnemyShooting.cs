@@ -34,6 +34,9 @@ public class EnemyShooting : MonoBehaviour
     [SerializeField]
     private Vector2 midDirection;
 
+    [Header("Generic animation")]
+    public float FireDelay = 0.0f;
+
     private float lastShot;
     private float shootDelay;
     private Transform player;
@@ -41,7 +44,6 @@ public class EnemyShooting : MonoBehaviour
     private float initialShootDelay = 2f; // wait a second before starting to shoot
     private List<Vector2> bulletDirections = new();
 
-    public float FireDelay = 0.0f;
 
     private EnemyAnimator anim;
 

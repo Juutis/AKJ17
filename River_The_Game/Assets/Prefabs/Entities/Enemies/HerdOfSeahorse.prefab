@@ -112,7 +112,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3063849764124195158, guid: 5df895a935577cb4c9736d21d53b4d04, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.58
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3063849764124195158, guid: 5df895a935577cb4c9736d21d53b4d04, type: 3}
       propertyPath: m_LocalPosition.y
@@ -149,6 +149,18 @@ PrefabInstance:
     - target: {fileID: 3063849764124195158, guid: 5df895a935577cb4c9736d21d53b4d04, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6380277483502908488, guid: 5df895a935577cb4c9736d21d53b4d04, type: 3}
+      propertyPath: phaseOffset
+      value: -4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6380277483502908488, guid: 5df895a935577cb4c9736d21d53b4d04, type: 3}
+      propertyPath: patternSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6380277483502908488, guid: 5df895a935577cb4c9736d21d53b4d04, type: 3}
+      propertyPath: patternAmplitude
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8746585634122619537, guid: 5df895a935577cb4c9736d21d53b4d04, type: 3}
       propertyPath: m_Name
@@ -178,7 +190,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3063849764124195158, guid: 5df895a935577cb4c9736d21d53b4d04, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.04
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 3063849764124195158, guid: 5df895a935577cb4c9736d21d53b4d04, type: 3}
       propertyPath: m_LocalPosition.y
@@ -215,6 +227,14 @@ PrefabInstance:
     - target: {fileID: 3063849764124195158, guid: 5df895a935577cb4c9736d21d53b4d04, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6380277483502908488, guid: 5df895a935577cb4c9736d21d53b4d04, type: 3}
+      propertyPath: patternSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6380277483502908488, guid: 5df895a935577cb4c9736d21d53b4d04, type: 3}
+      propertyPath: patternAmplitude
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8746585634122619537, guid: 5df895a935577cb4c9736d21d53b4d04, type: 3}
       propertyPath: m_Name
@@ -244,7 +264,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3063849764124195158, guid: 5df895a935577cb4c9736d21d53b4d04, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.69
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3063849764124195158, guid: 5df895a935577cb4c9736d21d53b4d04, type: 3}
       propertyPath: m_LocalPosition.y
@@ -281,6 +301,18 @@ PrefabInstance:
     - target: {fileID: 3063849764124195158, guid: 5df895a935577cb4c9736d21d53b4d04, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6380277483502908488, guid: 5df895a935577cb4c9736d21d53b4d04, type: 3}
+      propertyPath: phaseOffset
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6380277483502908488, guid: 5df895a935577cb4c9736d21d53b4d04, type: 3}
+      propertyPath: patternSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6380277483502908488, guid: 5df895a935577cb4c9736d21d53b4d04, type: 3}
+      propertyPath: patternAmplitude
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8746585634122619537, guid: 5df895a935577cb4c9736d21d53b4d04, type: 3}
       propertyPath: m_Name
@@ -347,6 +379,18 @@ PrefabInstance:
     - target: {fileID: 3063849764124195158, guid: 5df895a935577cb4c9736d21d53b4d04, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6380277483502908488, guid: 5df895a935577cb4c9736d21d53b4d04, type: 3}
+      propertyPath: phaseOffset
+      value: -1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6380277483502908488, guid: 5df895a935577cb4c9736d21d53b4d04, type: 3}
+      propertyPath: patternSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6380277483502908488, guid: 5df895a935577cb4c9736d21d53b4d04, type: 3}
+      propertyPath: patternAmplitude
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8746585634122619537, guid: 5df895a935577cb4c9736d21d53b4d04, type: 3}
       propertyPath: m_Name

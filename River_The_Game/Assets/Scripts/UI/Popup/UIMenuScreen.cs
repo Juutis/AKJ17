@@ -22,7 +22,8 @@ public class UIMenuScreen : MonoBehaviour
 
     private MenuScreen menu;
 
-    private bool initialized = false;
+    private List<UIMenuButton> buttons = new List<UIMenuButton>();
+
 
     private bool respawn = false;
 
@@ -31,20 +32,21 @@ public class UIMenuScreen : MonoBehaviour
 
     public void Initialize(MenuScreen newMenu)
     {
-        if (initialized)
-        {
-            return;
-        }
         menu = newMenu;
         imgBackground.sprite = menu.Background;
         txtTitle.text = menu.Title;
         txtDescription.text = menu.Description;
+        foreach (UIMenuButton button in buttons)
+        {
+            Destroy(button.gameObject);
+        }
+        buttons.Clear();
         foreach (MenuButton button in menu.Buttons)
         {
-            UIMenuButton menuButton = Instantiate(buttonPrefab, Vector3.zero, Quaternion.identity, buttonContainer);
+            UIMenuButton menuButton = Instantiate(buttonPrefab, buttonContainer);
             menuButton.Initialize(button, this);
+            buttons.Add(menuButton);
         }
-        initialized = true;
         transform.localPosition = Vector2.zero;
     }
 

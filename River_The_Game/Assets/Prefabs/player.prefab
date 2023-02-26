@@ -448,7 +448,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 3
-  invulnerabilityLength: 2
+  invulnerabilityLength: 4
   controlLossDuration: 0.5
   deadFish: {fileID: 8762981061127900926, guid: 6e9ca793927fc3943805aff50b923be9, type: 3}
 --- !u!114 &7871800620166225937

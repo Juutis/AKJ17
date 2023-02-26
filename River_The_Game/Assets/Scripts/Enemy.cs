@@ -50,14 +50,10 @@ public class Enemy : MonoBehaviour
         }
         if (!Alive && velocity.y < 0)
         {
-            var targetDir = rigidBody.velocity;
-            var diff = Vector2.SignedAngle(-transform.right, targetDir);
-            if (Mathf.Abs(diff) > 10.0f)
-            {
-                var rotateSpeed = 720.0f;
-                var rotation = Mathf.Min(rotateSpeed * Time.deltaTime, Mathf.Abs(diff));
-                transform.Rotate(Vector3.forward, Mathf.Sign(diff) * rotation);
-            }
+            var targetDir = (Vector2)rigidBody.velocity;
+            var diff = Vector2.SignedAngle(transform.right, targetDir);
+            transform.Rotate(transform.forward, diff);
+            Debug.Log("asdfasdf" + targetDir + ", " + transform.right + ", " + diff);
         }
     }
 

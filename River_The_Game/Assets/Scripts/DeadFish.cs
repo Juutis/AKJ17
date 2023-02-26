@@ -20,12 +20,7 @@ public class DeadFish : MonoBehaviour
         {
             var targetDir = rb.velocity;
             var diff = Vector2.SignedAngle(transform.right, targetDir);
-            if (Mathf.Abs(diff) > 10.0f)
-            {
-                var rotateSpeed = 720.0f;
-                var rotation = Mathf.Min(rotateSpeed * Time.deltaTime, Mathf.Abs(diff));
-                transform.Rotate(Vector3.forward, Mathf.Sign(diff) * rotation);
-            }
+            transform.Rotate(Vector3.forward, diff);
         }
     }
 

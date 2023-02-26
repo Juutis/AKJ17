@@ -21,11 +21,14 @@ public class Bullet : MonoBehaviour
 
     private Rigidbody2D rbody;
 
+    private ParticleSystem effect;
+
     // Start is called before the first frame update
     void Start()
     {
         started = Time.time;
         rbody = GetComponent<Rigidbody2D>();
+        effect = GetComponentInChildren<ParticleSystem>();
     }
 
     public void Initialize(Vector3 direction)
@@ -69,9 +72,9 @@ public class Bullet : MonoBehaviour
             velY += 0.10f;
             rbody.velocity = new Vector2(velX, Mathf.Clamp(velY, -3f, 3f));
 
-            if (transform.position.y >= 2)
+            if (transform.position.y >= 5)
             {
-                Destroy(gameObject);
+                Kill();
             }
         }
 
@@ -79,7 +82,7 @@ public class Bullet : MonoBehaviour
             isAlive = false;
             if (!floatUp)
             {
-                Destroy(gameObject);
+                Kill();
             }
             else
             {
@@ -94,7 +97,17 @@ public class Bullet : MonoBehaviour
         if (collision.gameObject.TryGetComponent<Enemy>(out Enemy enemy))
         {
             enemy.TakeDamage(damage);
-            Destroy(gameObject);
+            Kill();
         }
+    }
+
+    private void Kill()
+    {
+        if (effect != null)
+        {
+            effect.Stop();
+            effect.transform.parent = null;
+        }
+        Destroy(gameObject);
     }
 }

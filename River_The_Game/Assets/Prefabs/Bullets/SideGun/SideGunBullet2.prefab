@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 2031907064162885275}
   - component: {fileID: 1175443469637909554}
   - component: {fileID: 4906027174341471783}
-  m_Layer: 12
-  m_Name: EnemyBullet
-  m_TagString: EnemyBullet
+  m_Layer: 11
+  m_Name: SideGunBullet2
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,10 +99,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16c642ef5e03a9b42abc9887e249f490, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 8
   floatUp: 0
-  lifeTime: 3
-  damage: 2
+  lifeTime: 1
+  damage: 1
 --- !u!50 &1175443469637909554
 Rigidbody2D:
   serializedVersion: 4

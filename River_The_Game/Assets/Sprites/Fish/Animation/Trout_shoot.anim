@@ -24,7 +24,7 @@ AnimationClip:
       value: {fileID: -1979371854, guid: d911eeb6b5636704aa167d56eda8a00e, type: 3}
     - time: 0.016666668
       value: {fileID: -792305809, guid: d911eeb6b5636704aa167d56eda8a00e, type: 3}
-    - time: 0.5
+    - time: 0.16666667
       value: {fileID: -1979371854, guid: d911eeb6b5636704aa167d56eda8a00e, type: 3}
     attribute: m_Sprite
     path: Trout_sprite
@@ -56,7 +56,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.51666665
+    m_StopTime: 0.18333334
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

@@ -32,6 +32,7 @@ public class Shooting : MonoBehaviour
     private int shootingRateUpgrades = 0;
 
     private float shootingRateStep = 10f;
+    private PlayerAnimation anim;
 
     List<Vector3> sideGunnerDirs = new()
     {
@@ -65,6 +66,7 @@ public class Shooting : MonoBehaviour
     {
         lastShot = Time.time;
         playerMovement = GetComponent<PlayerMovement>();
+        anim = GetComponentInChildren<PlayerAnimation>();
     }
 
     public void DisableControls()
@@ -108,6 +110,7 @@ public class Shooting : MonoBehaviour
         GameObject bullet = Instantiate(currentMainGunPrefab);
         bullet.transform.position = transform.position + Vector3.right;
         bullet.GetComponent<Bullet>().Initialize(Vector3.right);
+        anim.Shoot();
 
         if (sideGunUpgrades > 0)
         {

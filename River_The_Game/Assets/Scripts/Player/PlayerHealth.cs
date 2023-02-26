@@ -11,6 +11,7 @@ public class PlayerHealth : MonoBehaviour
     private Shooting shooting;
     private PlayerMovement playerMovement;
     private Collider2D playerCollider;
+    private Rigidbody2D rigidBody;
 
     private bool isInvulnerable = false;
 
@@ -22,8 +23,10 @@ public class PlayerHealth : MonoBehaviour
     private bool controlsLost = false;
     private float controlLossTimer = 0f;
 
-
     private SpriteFlasher spriteFlasher;
+
+    [SerializeField]
+    private GameObject deadFish;
 
     private void Start()
     {
@@ -32,6 +35,7 @@ public class PlayerHealth : MonoBehaviour
         playerMovement = GetComponent<PlayerMovement>();
         shooting = GetComponent<Shooting>();
         playerCollider = GetComponent<Collider2D>();
+        rigidBody = GetComponent<Rigidbody2D>();
     }
 
     public void Initialize()
@@ -60,6 +64,13 @@ public class PlayerHealth : MonoBehaviour
             GameManager.main.GameOver();
             return;
         }
+
+        
+        var corpse = Instantiate(deadFish);
+        corpse.transform.position = transform.position;
+        corpse.transform.rotation = transform.rotation;
+        var rb = corpse.GetComponent<Rigidbody2D>();
+        rb.velocity = rigidBody.velocity / 2.0f;
 
         UIManager.main.LoseLife();
         playerMovement.Spawn();

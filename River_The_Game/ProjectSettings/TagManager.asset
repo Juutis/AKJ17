@@ -9,6 +9,7 @@ TagManager:
   - LevelManager
   - EnemyTurnActivator
   - EnemyBullet
+  - MovingWorld
   layers:
   - Default
   - TransparentFX

@@ -26,6 +26,13 @@ public class EnemyShooting : MonoBehaviour
     [SerializeField]
     private float directionCount;
 
+    [Header("AoE type")]
+    [SerializeField]
+    private float damageRadius;
+    [Header("AoE type")]
+    [SerializeField]
+    private ParticleSystem aoeEffect;
+
     [Header("Spread type")]
     [SerializeField]
     private float bulletCount;
@@ -43,6 +50,8 @@ public class EnemyShooting : MonoBehaviour
     private bool shootingEnabled;
     private float initialShootDelay = 2f; // wait a second before starting to shoot
     private List<Vector2> bulletDirections = new();
+
+    private PlayerHealth playerHealth;
 
 
     private EnemyAnimator anim;
@@ -81,6 +90,7 @@ public class EnemyShooting : MonoBehaviour
         }
 
         anim = GetComponentInChildren<EnemyAnimator>();
+        playerHealth = player.GetComponent<PlayerHealth>();
     }
 
     // Update is called once per frame
@@ -118,12 +128,16 @@ public class EnemyShooting : MonoBehaviour
         }
         else if (type == ShootingType.Omnidirectional || type == ShootingType.Spread)
         {
-            foreach(Vector2 dir2 in bulletDirections)
-            {
-                lastShot = Time.time;
-                Invoke("Fire", FireDelay);
-                anim.Shoot();
-            }
+            lastShot = Time.time;
+            Invoke("Fire", FireDelay);
+            anim.Shoot();
+        }
+        else if (type == ShootingType.AreaOfEffect)
+        {
+            lastShot = Time.time;
+            Invoke("Fire", FireDelay);
+            anim.Shoot();
+            aoeEffect.Play();
         }
     }
 
@@ -152,6 +166,13 @@ public class EnemyShooting : MonoBehaviour
                 bullet.GetComponent<Bullet>().Initialize(dir);
             }
         }
+        else if (type == ShootingType.AreaOfEffect)
+        {
+            if (Vector2.Distance(transform.position, player.position) < damageRadius)
+            {
+                playerHealth.TakeDamage();
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -169,5 +190,6 @@ enum ShootingType
     OnPlayerY,
     ConstantDirection,
     Omnidirectional,
-    Spread
+    Spread,
+    AreaOfEffect
 }

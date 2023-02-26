@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class EnemyGroup : MonoBehaviour
@@ -22,10 +23,15 @@ public class EnemyGroup : MonoBehaviour
     public void EnemyKilled(Enemy enemy)
     {
         enemies.Remove(enemy);
-        if (enemies.Count == 0)
+        if (enemies.All(x => !x.Alive))
         {
             pickupDrop.Drop(enemy.transform.position);
-            Destroy(gameObject);
+            Invoke("DestroyThis", 10f);
         }
+    }
+
+    private void DestroyThis()
+    {
+        Destroy(gameObject);
     }
 }

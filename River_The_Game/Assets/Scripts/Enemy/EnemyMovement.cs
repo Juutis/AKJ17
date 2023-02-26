@@ -5,20 +5,32 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField]
     private MovementType type;
     [SerializeField]
-    private float movementSpeed;
-    [SerializeField]
     private float phaseOffset;
     [SerializeField]
     private float patternSpeed;
+
+    [Header("Circle and sin type")]
+    [SerializeField]
+    private float patternAmplitude;
+
+    [Header("Go past types")]
+    [SerializeField]
+    private float movementSpeed;
 
     private float startTime;
     private Vector3 startPos;
     private float dir = 1;
     private bool movementEnabled;
+    private bool turnBack = false;
+    private float currentMovementSpeed;
+    private float turnBackT = 0;
+    private Vector3 playerDirection;
+    private Transform player;
 
     // Start is called before the first frame update
     void Start()
     {
+        player = FindObjectOfType<PlayerMovement>().transform;
         startTime = Time.time;
         startPos = transform.localPosition;
         movementEnabled = false;
@@ -32,24 +44,51 @@ public class EnemyMovement : MonoBehaviour
         float fromStart = Time.time - startTime;
         if (type == MovementType.Sin)
         {
-            transform.localPosition = startPos + Vector3.up * Mathf.Sin(fromStart * patternSpeed + phaseOffset) * 1.5f;
+            transform.localPosition = startPos + Vector3.up * Mathf.Sin(fromStart * patternSpeed + phaseOffset) * patternAmplitude;
         }
         else if (type == MovementType.Circle)
         {
-            transform.localPosition = startPos + Vector3.up * Mathf.Sin(fromStart * patternSpeed + phaseOffset) * 1.5f
-                                          + Vector3.left * Mathf.Cos(fromStart * patternSpeed + phaseOffset) * 1.5f;
+            transform.localPosition = startPos + Vector3.up * Mathf.Sin(fromStart * patternSpeed + phaseOffset) * patternAmplitude
+                                          + Vector3.left * Mathf.Cos(fromStart * patternSpeed + phaseOffset) * patternAmplitude;
         }
         else if (type == MovementType.GoPastAndTurnBack)
         {
-            transform.localPosition += Vector3.left * movementSpeed * Time.deltaTime;
-            if (transform.position.x < -8f && dir == 1)
+
+            transform.localPosition += Vector3.left * currentMovementSpeed * Time.deltaTime;
+            if (turnBack)
             {
                 dir = -1;
-                movementSpeed = dir * 2 * movementSpeed;
+                currentMovementSpeed = Mathf.Lerp(movementSpeed, dir * 2 * movementSpeed, turnBackT);
+                turnBackT += Time.deltaTime * 2f;
+                // Lerp movement up/down?
             }
-            // Move forward
-            // Hit a trigger at the end of view port?
-            // Go down (and/or up?) and lerp forward movement speed X into -X
+            else
+            {
+                currentMovementSpeed = movementSpeed;
+            }
+        }
+        else if (type == MovementType.GoPastAndTowardPlayer)
+        {
+            if (turnBackT >= 1)
+            {
+                transform.localPosition += playerDirection * currentMovementSpeed * Time.deltaTime;
+            }
+            else
+            {
+                transform.localPosition += Vector3.left * currentMovementSpeed * Time.deltaTime;
+                playerDirection = (transform.position - player.position).normalized;
+            }
+
+            if (turnBack)
+            {
+                dir = -1;
+                currentMovementSpeed = Mathf.Lerp(movementSpeed, dir * 2 * movementSpeed, turnBackT);
+                turnBackT += Time.deltaTime * 2f;
+            }
+            else
+            {
+                currentMovementSpeed = movementSpeed;
+            }
         }
     }
 
@@ -59,6 +98,10 @@ public class EnemyMovement : MonoBehaviour
         {
             movementEnabled = true;
         }
+        if (collision.tag == "EnemyTurnActivator")
+        {
+            turnBack = true;
+        }
     }
 }
 
@@ -66,5 +109,6 @@ enum MovementType
 {
     Sin,
     Circle,
-    GoPastAndTurnBack
+    GoPastAndTurnBack,
+    GoPastAndTowardPlayer
 }

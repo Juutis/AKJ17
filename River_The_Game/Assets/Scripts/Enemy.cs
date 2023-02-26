@@ -107,15 +107,7 @@ public class Enemy : MonoBehaviour
         {
             shooting.enabled = false;
         }
-    }
 
-    public void RegisterGroup(EnemyGroup group)
-    {
-        enemyGroup = group;
-    }
-
-    private void OnDestroy()
-    {
         PickupDrop drop = GetComponent<PickupDrop>();
         if (drop != null)
         {
@@ -125,5 +117,10 @@ public class Enemy : MonoBehaviour
         {
             enemyGroup.EnemyKilled(this);
         }
+    }
+
+    public void RegisterGroup(EnemyGroup group)
+    {
+        enemyGroup = group;
     }
 }

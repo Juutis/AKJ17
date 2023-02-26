@@ -1,3 +1,4 @@
+using Assets.Scripts.Player;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,7 @@ public class LevelManager : MonoBehaviour
     private int debugLevelIndex = 0;
 
     private int levelIndex = 0;
+    private PlayerUpgrades playerUpgrades;
 
     private void Awake()
     {
@@ -85,14 +87,32 @@ public class LevelManager : MonoBehaviour
 
     public void LoadFirstLevel()
     {
+        Debug.Log("Loading first level");
+        playerUpgrades = new PlayerUpgrades()
+        {
+            HP = 3,
+            MainGunUpgrades = 0,
+            SideGunUpgrades = 0,
+            ShootingRateUpgrades = 0
+        };
         SceneManager.LoadScene(currentLevel);
+        SceneManager.sceneLoaded += OnSceneLoad;
     }
 
-    public void NextLevel()
+    public void NextLevel(PlayerUpgrades upgrades)
     {
         if (IncreaseLevelIndex())
         {
             SceneManager.LoadScene(currentLevel);
+            playerUpgrades = upgrades;
+            SceneManager.sceneLoaded += OnSceneLoad;
         }
+    }
+
+    void OnSceneLoad(Scene scene, LoadSceneMode mode)
+    {
+        Debug.Log(playerUpgrades);
+        GameManager.main.SetPlayerUpgrades(playerUpgrades);
+        SceneManager.sceneLoaded -= OnSceneLoad;
     }
 }

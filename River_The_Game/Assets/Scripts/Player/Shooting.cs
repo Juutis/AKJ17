@@ -27,10 +27,6 @@ public class Shooting : MonoBehaviour
 
     private bool allowedToShoot = true;
 
-    private int mainGunUpgrades = 0;
-    private int sideGunUpgrades = 0;
-    private int shootingRateUpgrades = 0;
-
     private float shootingRateStep = 10f;
     private PlayerAnimation anim;
 
@@ -42,24 +38,7 @@ public class Shooting : MonoBehaviour
         new (-1, -1, 0)
     };
 
-    private float shootingRate { get { return shootingBaseRate + shootingRateStep * shootingRateUpgrades; } }
-
-    public void IncreaseFireRate(int increase)
-    {
-        // Debug.Log($"Firerate: {shootingRate} -> {shootingRate + increase}");
-        // shootingRate += increase;
-        shootingRateUpgrades += increase;
-    }
-
-    public void UpgradeMainGun()
-    {
-        mainGunUpgrades++;
-    }
-
-    public void UpgradeSideGun()
-    {
-        sideGunUpgrades++;
-    }
+    private float shootingRate { get { return shootingBaseRate + shootingRateStep * GameManager.main.ShootingRateUpgrades; } }
 
     // Start is called before the first frame update
     void Start()
@@ -81,18 +60,8 @@ public class Shooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (upgradeSideGunner)
-        {
-            UpgradeSideGun();
-            upgradeSideGunner = false;
-        }
-        if (upgradeMainGunner)
-        {
-            UpgradeMainGun();
-            upgradeMainGunner = false;
-        }
-        currentMainGunPrefab = mainGunBulletPrefabs[Mathf.Clamp(mainGunUpgrades, 0, mainGunBulletPrefabs.Count - 1)];
-        currentSideGunPrefab = sideGunBulletPrefabs[Mathf.Clamp(sideGunUpgrades, 0, sideGunBulletPrefabs.Count - 1)];
+        currentMainGunPrefab = mainGunBulletPrefabs[Mathf.Clamp(GameManager.main.MainGunUpgrades, 0, mainGunBulletPrefabs.Count - 1)];
+        currentSideGunPrefab = sideGunBulletPrefabs[Mathf.Clamp(GameManager.main.SideGunUpgrades, 0, sideGunBulletPrefabs.Count - 1)];
 
         if (!allowedToShoot || playerMovement.IsAboveWater)
         {
@@ -112,9 +81,9 @@ public class Shooting : MonoBehaviour
         bullet.GetComponent<Bullet>().Initialize(Vector3.right);
         anim.Shoot();
 
-        if (sideGunUpgrades > 0)
+        if (GameManager.main.SideGunUpgrades > 0)
         {
-            int sideGunners = (new[] { 1, 2, 4 })[Mathf.Clamp(sideGunUpgrades - 1, 0, 2)];
+            int sideGunners = (new[] { 1, 2, 4 })[Mathf.Clamp(GameManager.main.SideGunUpgrades - 1, 0, 2)];
             for (int i = 0; i < sideGunners; i++)
             {
                 GameObject sideBullet = Instantiate(currentSideGunPrefab);

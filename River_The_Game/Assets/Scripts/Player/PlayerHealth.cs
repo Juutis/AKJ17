@@ -6,7 +6,7 @@ public class PlayerHealth : MonoBehaviour
 {
     [SerializeField]
     private int startingHealth = 3;
-    private int currentHealth = 3;
+    private int currentHealth => GameManager.main.PlayerHP;
 
     private Shooting shooting;
     private PlayerMovement playerMovement;
@@ -28,16 +28,21 @@ public class PlayerHealth : MonoBehaviour
     private void Start()
     {
         spriteFlasher = GetComponent<SpriteFlasher>();
-        currentHealth = startingHealth;
+        //currentHealth = startingHealth;
         playerMovement = GetComponent<PlayerMovement>();
         shooting = GetComponent<Shooting>();
         playerCollider = GetComponent<Collider2D>();
-        UIManager.main.SetLives(startingHealth);
+    }
+
+    public void Initialize()
+    {
+        Debug.Log(GameManager.main.PlayerHP);
+        UIManager.main.SetLives(GameManager.main.PlayerHP);
     }
 
     public void GainLife()
     {
-        currentHealth += 1;
+        //currentHealth += 1;
         UIManager.main.GainLife();
     }
 
@@ -48,7 +53,8 @@ public class PlayerHealth : MonoBehaviour
             return;
         }
         Debug.Log($"[PlayerHealth]: Hp {currentHealth} -> {currentHealth - damage}");
-        currentHealth -= damage;
+        //currentHealth -= damage;
+        GameManager.main.TakeDamage();
         if (currentHealth <= 0)
         {
             GameManager.main.GameOver();

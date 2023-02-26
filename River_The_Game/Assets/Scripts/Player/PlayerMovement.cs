@@ -35,6 +35,11 @@ public class PlayerMovement : MonoBehaviour
 
     private bool isAllowedToMove = true;
 
+    [SerializeField]
+    private GameObject waterSplash;
+
+    private float lastY = 0;
+
     private void Update()
     {
         CollectInput();
@@ -95,6 +100,15 @@ public class PlayerMovement : MonoBehaviour
                 isFalling = false;
             }
         }
+
+        if (lastY > waterSurface.position.y && transform.position.y <= waterSurface.position.y ||
+            lastY < waterSurface.position.y && transform.position.y >= waterSurface.position.y)
+        {
+            var splash = Instantiate(waterSplash);
+            splash.transform.position = transform.position;
+        }
+
+        lastY = transform.position.y;
     }
 
     private void FaceDirection()

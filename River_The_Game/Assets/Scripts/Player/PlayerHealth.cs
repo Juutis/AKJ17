@@ -53,8 +53,8 @@ public class PlayerHealth : MonoBehaviour
             return;
         }
         Debug.Log($"[PlayerHealth]: Hp {currentHealth} -> {currentHealth - damage}");
-        //currentHealth -= damage;
         GameManager.main.TakeDamage();
+        SoundManager.main.PlaySound(GameSoundType.PlayerHurt);
         if (currentHealth <= 0)
         {
             GameManager.main.GameOver();

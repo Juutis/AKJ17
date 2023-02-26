@@ -25,7 +25,7 @@ TagManager:
   - EnemyBullet
   - ConfineTrigger
   - Particle Collider
-  - 
+  - Dead Enemy
   - 
   - 
   - 
@@ -43,6 +43,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 3382055255
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Foreground
+    uniqueID: 848643711
     locked: 0

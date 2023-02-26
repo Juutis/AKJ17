@@ -27,6 +27,7 @@ public class Pickup : MonoBehaviour
         if (effect.Type == PickupEffectType.IncreaseBubbleFireRate)
         {
             GameManager.main.IncreaseBubbleFireRate(effect.Value);
+            SoundManager.main.PlaySound(GameSoundType.GainPowerup);
         }
         else if (effect.Type == PickupEffectType.NextLevel)
         {
@@ -35,14 +36,17 @@ public class Pickup : MonoBehaviour
         else if (effect.Type == PickupEffectType.MainGunUpgrade)
         {
             GameManager.main.UpgradeMainGun();
+            SoundManager.main.PlaySound(GameSoundType.GainPowerup);
         }
         else if (effect.Type == PickupEffectType.SideGunUpgrade)
         {
             GameManager.main.UpgradeSideGun();
+            SoundManager.main.PlaySound(GameSoundType.GainPowerup);
         }
         else if (effect.Type == PickupEffectType.GainLife)
         {
             GameManager.main.GainLife();
+            SoundManager.main.PlaySound(GameSoundType.GainPowerup);
         }
     }
 

@@ -80,6 +80,7 @@ public class Shooting : MonoBehaviour
         bullet.transform.position = transform.position + Vector3.right;
         bullet.GetComponent<Bullet>().Initialize(Vector3.right);
         anim.Shoot();
+        SoundManager.main.PlaySound(GameSoundType.BubbleShoot);
 
         if (GameManager.main.SideGunUpgrades > 0)
         {

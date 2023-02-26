@@ -12,6 +12,8 @@ public class PlantSpawner : MonoBehaviour
 
     [SerializeField]
     private int sortingOrder = 0;
+    [SerializeField]
+    private string sortingLayerName = "Default";
 
     private float width = 500;
 
@@ -34,6 +36,7 @@ public class PlantSpawner : MonoBehaviour
             var spriteRenderer = plant.GetComponentInChildren<SpriteRenderer>();
             spriteRenderer.color = tint;
             spriteRenderer.sortingOrder = sortingOrder;
+            spriteRenderer.sortingLayerName = sortingLayerName;
             var t = Random.Range(0.9f, 1.1f);
             plant.transform.localScale = new Vector3(t, t, t);
         }

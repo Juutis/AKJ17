@@ -627,7 +627,7 @@ MonoBehaviour:
   - SpriteRenderer: {fileID: 7662446392625913425}
     Scaling: 1
     Placement: 4
-    CustomY: 0.9
+    CustomY: 1
     CustomX: 0
   - SpriteRenderer: {fileID: 6252477425163710397}
     Scaling: 0

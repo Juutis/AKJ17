@@ -48,6 +48,7 @@ public class PlayerHealth : MonoBehaviour
             return;
         }
         Debug.Log($"[PlayerHealth]: Hp {currentHealth} -> {currentHealth - damage}");
+        SoundManager.main.PlaySound(GameSoundType.PlayerHurt);
         currentHealth -= damage;
         if (currentHealth <= 0)
         {

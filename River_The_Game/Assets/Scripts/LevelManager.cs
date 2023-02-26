@@ -13,6 +13,11 @@ public class LevelManager : MonoBehaviour
 
     private int levelIndex = 0;
 
+    [SerializeField]
+    private MusicManager musicManager;
+
+    bool sceneIsMainMenu { get { return SceneManager.GetActiveScene().name == "mainMenu"; } }
+
     private void Awake()
     {
         if (GameObject.FindGameObjectsWithTag("LevelManager").Length > 1)
@@ -34,6 +39,14 @@ public class LevelManager : MonoBehaviour
                 Debug.Log($"Level index was determined to be {levelIndex}");
                 break;
             }
+        }
+        if (sceneIsMainMenu)
+        {
+            musicManager.StartMusic(true);
+        }
+        else
+        {
+            musicManager.StartMusic(false);
         }
     }
 
@@ -86,10 +99,12 @@ public class LevelManager : MonoBehaviour
     public void LoadFirstLevel()
     {
         SceneManager.LoadScene(currentLevel);
+        musicManager.SwitchMusic(false);
     }
 
     public void NextLevel()
     {
+        bool mainMenu = sceneIsMainMenu;
         if (IncreaseLevelIndex())
         {
             SceneManager.LoadScene(currentLevel);

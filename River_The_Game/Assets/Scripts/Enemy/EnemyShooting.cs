@@ -1,8 +1,5 @@
-using Mono.Cecil;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class EnemyShooting : MonoBehaviour
 {
@@ -75,7 +72,7 @@ public class EnemyShooting : MonoBehaviour
         else if (type == ShootingType.Spread)
         {
             float angleFromMid = spreadAngle / 2f;
-            float angleBetweenDirs = spreadAngle / (bulletCount-1);
+            float angleBetweenDirs = spreadAngle / (bulletCount - 1);
             Vector2 startDir = Quaternion.Euler(0, 0, -angleFromMid) * midDirection;
             Debug.Log($"Start: {startDir}, mid: {midDirection}");
             for (int i = 0; i < bulletCount; i++)
@@ -158,7 +155,7 @@ public class EnemyShooting : MonoBehaviour
         }
         else if (type == ShootingType.Omnidirectional || type == ShootingType.Spread)
         {
-            foreach(Vector2 dir2 in bulletDirections)
+            foreach (Vector2 dir2 in bulletDirections)
             {
                 Vector3 dir = new Vector3(dir2.x, dir2.y, 0);
                 GameObject bullet = Instantiate(bulletPrefab);

@@ -30,6 +30,8 @@ public class UIMenuScreen : MonoBehaviour
     [SerializeField]
     private Animator animator;
 
+    private bool isOpen = false;
+
     public void Initialize(MenuScreen newMenu)
     {
         menu = newMenu;
@@ -48,6 +50,14 @@ public class UIMenuScreen : MonoBehaviour
             buttons.Add(menuButton);
         }
         transform.localPosition = Vector2.zero;
+    }
+
+    private void Update()
+    {
+        if (isOpen && Input.GetKeyDown(KeyCode.P) && menu.Title == "paused")
+        {
+            Close();
+        }
     }
 
     public void OnClick(MenuButtonAction action)
@@ -78,17 +88,23 @@ public class UIMenuScreen : MonoBehaviour
 
     public void Open(string title = "", string description = "", Sprite icon = null)
     {
+        isOpen = true;
         GameManager.main.PauseGame();
         animator.Play("uiMenuScreenOpen");
 
     }
     public void CloseFinished()
     {
+        isOpen = false;
         UIManager.main.MenuWasClosed();
         GameManager.main.ResumeGame();
     }
     private void Close()
     {
+        foreach (UIMenuButton button in buttons)
+        {
+            button.Disable();
+        }
         animator.Play("uiMenuScreenClose");
     }
 }

@@ -27,6 +27,8 @@ public class UIManager : MonoBehaviour
 
     private UIMenuScreen menuScreen;
 
+    private bool pauseOpen = false;
+
     private bool menuIsOpen = false;
 
     private UIMenuScreen InitMenu()
@@ -63,7 +65,6 @@ public class UIManager : MonoBehaviour
 
     public void ShowPauseMenu()
     {
-
         if (menuIsOpen)
         {
             return;
@@ -71,6 +72,7 @@ public class UIManager : MonoBehaviour
         UIMenuScreen screen = InitMenu();
         screen.Initialize(pauseMenu);
         screen.Open();
+        pauseOpen = true;
         menuIsOpen = true;
     }
 
@@ -92,6 +94,7 @@ public class UIManager : MonoBehaviour
 
     public void MenuWasClosed()
     {
+        pauseOpen = false;
         menuIsOpen = false;
     }
 }

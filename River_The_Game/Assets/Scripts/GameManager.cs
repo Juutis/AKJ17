@@ -1,5 +1,4 @@
 using Assets.Scripts.Player;
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour

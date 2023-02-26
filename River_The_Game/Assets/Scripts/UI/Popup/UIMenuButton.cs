@@ -23,6 +23,11 @@ public class UIMenuButton : MonoBehaviour
         txtTitle.text = newButton.Title;
     }
 
+    public void Disable()
+    {
+        uiButton.enabled = false;
+    }
+
     public void OnClick()
     {
         screen.OnClick(button.Action);

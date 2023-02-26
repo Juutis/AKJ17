@@ -68,6 +68,10 @@ PrefabInstance:
       propertyPath: hp
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 2760264920306614202, guid: c5bec76001052eb4c96d6c14f20550db, type: 3}
+      propertyPath: deathEffect
+      value: 
+      objectReference: {fileID: 8489507864381439419, guid: 976f3144748f7304d913f3143757a04e, type: 3}
     - target: {fileID: 8333357063268936680, guid: c5bec76001052eb4c96d6c14f20550db, type: 3}
       propertyPath: m_Name
       value: SmallFishFollow

@@ -118,10 +118,19 @@ public class PlayerMovement : MonoBehaviour
             Vector2 dir = rb.velocity;
             float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            if (dir.x < 0.0f)
+            {
+                transform.localScale = new Vector3(transform.localScale.x , -1.0f, transform.localScale.z);
+            }
+            else
+            {
+                transform.localScale = new Vector3(transform.localScale.x , 1.0f, transform.localScale.z);
+            }
         }
         else
         {
             transform.rotation = Quaternion.identity;
+            transform.localScale = new Vector3(transform.localScale.x , 1.0f, transform.localScale.z);
         }
 
     }

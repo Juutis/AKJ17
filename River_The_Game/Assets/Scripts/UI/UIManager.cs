@@ -22,6 +22,8 @@ public class UIManager : MonoBehaviour
     private MenuScreen pauseMenu;
     [SerializeField]
     private MenuScreen gameOverMenu;
+    [SerializeField]
+    private MenuScreen theEndMenu;
 
     private UIMenuScreen menuScreen;
 
@@ -48,6 +50,13 @@ public class UIManager : MonoBehaviour
     {
         UIMenuScreen screen = InitMenu();
         screen.Initialize(gameOverMenu);
+        screen.Open();
+        menuIsOpen = true;
+    }
+    public void TheEnd()
+    {
+        UIMenuScreen screen = InitMenu();
+        screen.Initialize(theEndMenu);
         screen.Open();
         menuIsOpen = true;
     }

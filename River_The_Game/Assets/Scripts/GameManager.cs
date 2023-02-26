@@ -31,6 +31,13 @@ public class GameManager : MonoBehaviour
         if (levelManagerObject == null)
         {
             levelManager = Instantiate(levelManagerPrefab).GetComponent<LevelManager>();
+            playerUpgrades = new PlayerUpgrades()
+            {
+                HP = 3,
+                MainGunUpgrades = 0,
+                SideGunUpgrades = 0,
+                ShootingRateUpgrades = 0
+            };
         }
         else
         {
@@ -121,6 +128,7 @@ public class GameManager : MonoBehaviour
         playerUpgrades.SideGunUpgrades = 0;
         playerUpgrades.ShootingRateUpgrades = 0;
         playerUpgrades.HP = 3;
+        UIManager.main.TheEnd();
     }
 
     public void SetPlayerUpgrades(PlayerUpgrades upgrades)

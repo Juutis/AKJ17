@@ -32,13 +32,21 @@ public class LevelManager : MonoBehaviour
     private void Start()
     {
         Scene currentScene = SceneManager.GetActiveScene();
-
+        Debug.Log("Start levelmanager");
         for (int index = 0; index < scenes.Count; index += 1)
         {
             if (currentScene.path == scenes[index].scenePath)
             {
                 levelIndex = index;
+                debugLevelIndex = index;
                 Debug.Log($"Level index was determined to be {levelIndex}");
+                playerUpgrades = new PlayerUpgrades()
+                {
+                    HP = 3,
+                    MainGunUpgrades = 0,
+                    SideGunUpgrades = 0,
+                    ShootingRateUpgrades = 0
+                };
                 break;
             }
         }
@@ -145,7 +153,7 @@ public class LevelManager : MonoBehaviour
 
     void OnSceneLoad(Scene scene, LoadSceneMode mode)
     {
-        Debug.Log(playerUpgrades);
+        Debug.Log($"HP: {playerUpgrades.HP}");
         GameManager.main.SetPlayerUpgrades(playerUpgrades);
         SceneManager.sceneLoaded -= OnSceneLoad;
     }

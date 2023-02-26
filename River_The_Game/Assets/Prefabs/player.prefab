@@ -37,7 +37,7 @@ Transform:
   m_Children:
   - {fileID: 2607329051784765544}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7711841555263173951
 MonoBehaviour:
@@ -141,9 +141,9 @@ MonoBehaviour:
   - {fileID: 512819945521265382, guid: 9c01fd4cfa6e5364d9e46500d4963d08, type: 3}
   sideGunBulletPrefabs:
   - {fileID: 512819945521265382, guid: c66e09465fee6f64c8d9c0c77f7fcb7e, type: 3}
-  - {fileID: 512819945521265382, guid: c66e09465fee6f64c8d9c0c77f7fcb7e, type: 3}
-  - {fileID: 512819945521265382, guid: c66e09465fee6f64c8d9c0c77f7fcb7e, type: 3}
-  - {fileID: 512819945521265382, guid: c66e09465fee6f64c8d9c0c77f7fcb7e, type: 3}
+  - {fileID: 512819945521265382, guid: 60bc09da7aefc3e4a8e530d43d66017c, type: 3}
+  - {fileID: 512819945521265382, guid: 60bc09da7aefc3e4a8e530d43d66017c, type: 3}
+  - {fileID: 512819945521265382, guid: 60bc09da7aefc3e4a8e530d43d66017c, type: 3}
   shootingBaseRate: 120
 --- !u!114 &4851895891345244210
 MonoBehaviour:

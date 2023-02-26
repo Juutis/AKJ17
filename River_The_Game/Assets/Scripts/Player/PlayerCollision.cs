@@ -21,5 +21,10 @@ public class PlayerCollision : MonoBehaviour
                 playerHealth.TakeDamage();
             }
         }
+        else if (other.gameObject.tag == "EnemyBullet")
+        {
+            playerHealth.TakeDamage();
+            Destroy(other.gameObject);
+        }
     }
 }

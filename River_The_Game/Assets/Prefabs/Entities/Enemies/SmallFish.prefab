@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 957327630660940835, guid: c1fa3d01b669bbc4699e14b0902f2756, type: 3}
+      propertyPath: hp
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6386520036077330545, guid: c1fa3d01b669bbc4699e14b0902f2756, type: 3}
       propertyPath: m_Name
       value: SmallFish

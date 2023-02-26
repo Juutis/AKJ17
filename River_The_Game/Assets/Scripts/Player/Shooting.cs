@@ -27,7 +27,7 @@ public class Shooting : MonoBehaviour
 
     private bool allowedToShoot = true;
 
-    private float shootingRateStep = 10f;
+    private float shootingRateStep = 40f;
     private PlayerAnimation anim;
 
     [SerializeField]

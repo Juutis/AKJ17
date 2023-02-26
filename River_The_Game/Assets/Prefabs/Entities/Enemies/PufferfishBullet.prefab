@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PufferfishBullet
       objectReference: {fileID: 0}
+    - target: {fileID: 4632788180259443230, guid: 1a67bc4346c89354db851bc5edee9a8c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4906027174341471783, guid: 1a67bc4346c89354db851bc5edee9a8c, type: 3}
       propertyPath: m_Radius
       value: 0.105558574
@@ -22,7 +26,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6470303272489739280, guid: 1a67bc4346c89354db851bc5edee9a8c, type: 3}
       propertyPath: m_RootOrder
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6470303272489739280, guid: 1a67bc4346c89354db851bc5edee9a8c, type: 3}
       propertyPath: m_LocalScale.x
@@ -76,10 +80,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6556556666249676335, guid: 1a67bc4346c89354db851bc5edee9a8c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: bbfdb0ece35d1c747b96410ce528496c, type: 3}
     - target: {fileID: 7539288351063117465, guid: 1a67bc4346c89354db851bc5edee9a8c, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: bbfdb0ece35d1c747b96410ce528496c, type: 3}
+    - target: {fileID: 7539288351063117465, guid: 1a67bc4346c89354db851bc5edee9a8c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

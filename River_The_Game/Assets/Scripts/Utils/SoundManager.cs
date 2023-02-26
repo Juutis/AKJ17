@@ -42,7 +42,9 @@ public enum GameSoundType
     BubbleShoot,
     HitFish,
     GainPowerup,
-    PlayerHurt
+    PlayerHurt,
+    Jump,
+    Splash
 
 }
 

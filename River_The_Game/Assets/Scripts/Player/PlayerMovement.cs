@@ -116,12 +116,20 @@ public class PlayerMovement : MonoBehaviour
                 isFalling = false;
             }
         }
-
-        if (lastY > waterSurface.position.y && transform.position.y <= waterSurface.position.y ||
-            lastY < waterSurface.position.y && transform.position.y >= waterSurface.position.y)
+        bool goingUp = lastY < waterSurface.position.y && transform.position.y >= waterSurface.position.y;
+        bool goingDown = lastY > waterSurface.position.y && transform.position.y <= waterSurface.position.y;
+        if (goingUp || goingDown)
         {
             var splash = Instantiate(waterSplash);
             splash.transform.position = transform.position;
+            if (goingUp)
+            {
+                SoundManager.main.PlaySound(GameSoundType.Jump);
+            }
+            else if (goingDown)
+            {
+                SoundManager.main.PlaySound(GameSoundType.Splash);
+            }
         }
 
         lastY = transform.position.y;
@@ -136,17 +144,17 @@ public class PlayerMovement : MonoBehaviour
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
             if (dir.x < 0.0f)
             {
-                transform.localScale = new Vector3(transform.localScale.x , -1.0f, transform.localScale.z);
+                transform.localScale = new Vector3(transform.localScale.x, -1.0f, transform.localScale.z);
             }
             else
             {
-                transform.localScale = new Vector3(transform.localScale.x , 1.0f, transform.localScale.z);
+                transform.localScale = new Vector3(transform.localScale.x, 1.0f, transform.localScale.z);
             }
         }
         else
         {
             transform.rotation = Quaternion.identity;
-            transform.localScale = new Vector3(transform.localScale.x , 1.0f, transform.localScale.z);
+            transform.localScale = new Vector3(transform.localScale.x, 1.0f, transform.localScale.z);
         }
 
     }

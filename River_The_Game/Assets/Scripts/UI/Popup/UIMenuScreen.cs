@@ -43,6 +43,7 @@ public class UIMenuScreen : MonoBehaviour
             Destroy(button.gameObject);
         }
         buttons.Clear();
+        Debug.Log($"init {buttons.Count}");
         foreach (MenuButton button in menu.Buttons)
         {
             UIMenuButton menuButton = Instantiate(buttonPrefab, buttonContainer);
@@ -88,10 +89,12 @@ public class UIMenuScreen : MonoBehaviour
 
     public void Open(string title = "", string description = "", Sprite icon = null)
     {
-        isOpen = true;
         GameManager.main.PauseGame();
         animator.Play("uiMenuScreenOpen");
-
+    }
+    public void OpenFinished()
+    {
+        isOpen = true;
     }
     public void CloseFinished()
     {
@@ -105,6 +108,7 @@ public class UIMenuScreen : MonoBehaviour
         {
             button.Disable();
         }
+        Debug.Log("buttons disabled!");
         animator.Play("uiMenuScreenClose");
     }
 }

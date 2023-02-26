@@ -59,6 +59,7 @@ MonoBehaviour:
   waterSurface: {fileID: 0}
   backToWaterPoint: {fileID: 0}
   fallBuffer: 1
+  waterSplash: {fileID: 5743272382115208725, guid: 677080689ee3ceb44a75fe972cb6d400, type: 3}
 --- !u!50 &5627545110533612879
 Rigidbody2D:
   serializedVersion: 4

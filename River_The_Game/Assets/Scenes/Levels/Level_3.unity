@@ -1601,9 +1601,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 372972869387308895, guid: 3a93ca71dff57b84f95b9871807ceae3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1437390733}
-    - targetCorrespondingSourceObject: {fileID: 372972869387308895, guid: 3a93ca71dff57b84f95b9871807ceae3, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1437390732}
   m_SourcePrefab: {fileID: 100100000, guid: 3a93ca71dff57b84f95b9871807ceae3, type: 3}
 --- !u!1001 &1068288571
 PrefabInstance:
@@ -2251,30 +2248,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6254363757973138584, guid: 3a93ca71dff57b84f95b9871807ceae3, type: 3}
   m_PrefabInstance: {fileID: 1046022472}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1437390732
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1437390730}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f47e5fe9fc770148a33ffbfed147ba1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 3
-  bulletPrefab: {fileID: 512819945521265382, guid: 1a67bc4346c89354db851bc5edee9a8c, type: 3}
-  shootingRate: 50
-  damage: 1
-  direction: {x: 0, y: 0}
-  directionCount: 0
-  damageRadius: 0
-  aoeEffect: {fileID: 0}
-  bulletCount: 0
-  spreadAngle: 0
-  midDirection: {x: 0, y: 0}
-  FireDelay: 0
 --- !u!114 &1437390733
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -30,6 +30,9 @@ public class Shooting : MonoBehaviour
     private float shootingRateStep = 10f;
     private PlayerAnimation anim;
 
+    [SerializeField]
+    private GameObject[] SideGunsGraphics;
+
     List<Vector3> sideGunnerDirs = new()
     {
         new (1, -1, 0),
@@ -60,6 +63,24 @@ public class Shooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        var sideGuns = Mathf.Clamp(GameManager.main.SideGunUpgrades, 0, SideGunsGraphics.Length - 1);
+        for(int i = 0; i < SideGunsGraphics.Length; i++)
+        {
+            if (SideGunsGraphics[i] == null)
+            {
+                continue;
+            }
+
+            if (i == sideGuns)
+            {
+                SideGunsGraphics[i].SetActive(true);
+            }
+            else
+            {
+                SideGunsGraphics[i].SetActive(false);
+            }
+        }
+
         currentMainGunPrefab = mainGunBulletPrefabs[Mathf.Clamp(GameManager.main.MainGunUpgrades, 0, mainGunBulletPrefabs.Count - 1)];
         currentSideGunPrefab = sideGunBulletPrefabs[Mathf.Clamp(GameManager.main.SideGunUpgrades, 0, sideGunBulletPrefabs.Count - 1)];
 
@@ -89,10 +110,11 @@ public class Shooting : MonoBehaviour
             {
                 GameObject sideBullet = Instantiate(currentSideGunPrefab);
                 Vector3 dir = sideGunnerDirs[i].normalized;
-                sideBullet.transform.position = transform.position + dir;
+                sideBullet.transform.position = transform.position + dir * 0.5f;
                 sideBullet.GetComponent<Bullet>().Initialize(dir);
             }
         }
+
     }
 
 }

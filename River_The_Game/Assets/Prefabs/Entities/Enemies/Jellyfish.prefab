@@ -76,15 +76,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 812790094605665206, guid: c1fa3d01b669bbc4699e14b0902f2756, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 812790094605665206, guid: c1fa3d01b669bbc4699e14b0902f2756, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.274146
+      value: 21.06
       objectReference: {fileID: 0}
     - target: {fileID: 812790094605665206, guid: c1fa3d01b669bbc4699e14b0902f2756, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.3994524
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 812790094605665206, guid: c1fa3d01b669bbc4699e14b0902f2756, type: 3}
       propertyPath: m_LocalPosition.z
@@ -150,6 +150,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Jellyfish
       objectReference: {fileID: 0}
+    - target: {fileID: 8739283427216920232, guid: c1fa3d01b669bbc4699e14b0902f2756, type: 3}
+      propertyPath: type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8739283427216920232, guid: c1fa3d01b669bbc4699e14b0902f2756, type: 3}
+      propertyPath: patternSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8739283427216920232, guid: c1fa3d01b669bbc4699e14b0902f2756, type: 3}
+      propertyPath: patternAmplitude
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8739283427216920232, guid: c1fa3d01b669bbc4699e14b0902f2756, type: 3}
+      propertyPath: baseMovementSpeed
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 4275883646100775025, guid: c1fa3d01b669bbc4699e14b0902f2756, type: 3}
@@ -160,8 +176,40 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 812790094605665206, guid: c1fa3d01b669bbc4699e14b0902f2756, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2323819436604654890}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6386520036077330545, guid: c1fa3d01b669bbc4699e14b0902f2756, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6709975614611917000}
   m_SourcePrefab: {fileID: 100100000, guid: c1fa3d01b669bbc4699e14b0902f2756, type: 3}
+--- !u!1 &372972869387308895 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6386520036077330545, guid: c1fa3d01b669bbc4699e14b0902f2756, type: 3}
+  m_PrefabInstance: {fileID: 6740880370884783918}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6709975614611917000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 372972869387308895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f47e5fe9fc770148a33ffbfed147ba1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 4
+  bulletPrefab: {fileID: 5236541138252582769, guid: ed8de8ae5d0d2a34ba125ff310f2d2ed, type: 3}
+  shootingRate: 200
+  damage: 1
+  direction: {x: 0, y: 0}
+  directionCount: 8
+  damageRadius: 3
+  aoeEffect: {fileID: 5119275676278943566}
+  bulletCount: 0
+  spreadAngle: 0
+  midDirection: {x: 0, y: 0}
+  FireDelay: 0
 --- !u!4 &6254363757973138584 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 812790094605665206, guid: c1fa3d01b669bbc4699e14b0902f2756, type: 3}
@@ -175,6 +223,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6254363757973138584}
     m_Modifications:
+    - target: {fileID: 2853458259829105862, guid: d686127b3cbd16d489eb6faa4e4f3133, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2853458259829105862, guid: d686127b3cbd16d489eb6faa4e4f3133, type: 3}
       propertyPath: ShapeModule.arc.mode
       value: 3
@@ -255,5 +307,10 @@ PrefabInstance:
 --- !u!4 &2323819436604654890 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4660392488678968994, guid: d686127b3cbd16d489eb6faa4e4f3133, type: 3}
+  m_PrefabInstance: {fileID: 6958860983878273928}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &5119275676278943566 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 2853458259829105862, guid: d686127b3cbd16d489eb6faa4e4f3133, type: 3}
   m_PrefabInstance: {fileID: 6958860983878273928}
   m_PrefabAsset: {fileID: 0}

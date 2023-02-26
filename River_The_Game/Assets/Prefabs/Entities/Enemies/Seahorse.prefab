@@ -66,7 +66,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 957327630660940835, guid: c1fa3d01b669bbc4699e14b0902f2756, type: 3}
       propertyPath: hp
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 957327630660940835, guid: c1fa3d01b669bbc4699e14b0902f2756, type: 3}
       propertyPath: deathEffect
@@ -129,7 +129,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8746585634122619537}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9f47e5fe9fc770148a33ffbfed147ba1, type: 3}
   m_Name: 

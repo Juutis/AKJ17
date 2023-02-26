@@ -102,6 +102,14 @@ public class LevelManager : MonoBehaviour
     {
         Scene currentScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(currentScene.name);
+        playerUpgrades = new PlayerUpgrades()
+        {
+            HP = 3,
+            MainGunUpgrades = 0,
+            SideGunUpgrades = 0,
+            ShootingRateUpgrades = 0
+        };
+        SceneManager.sceneLoaded += OnSceneLoad;
     }
     public void MainMenu()
     {

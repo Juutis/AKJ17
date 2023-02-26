@@ -13,6 +13,11 @@ public class UIHealth : MonoBehaviour
     private List<UILife> lives = new List<UILife>();
     public void SetLives(int value)
     {
+        foreach (UILife life in lives)
+        {
+            life.Kill();
+        }
+        lives.Clear();
         for (int index = 0; index < value; index += 1)
         {
             AddLife();

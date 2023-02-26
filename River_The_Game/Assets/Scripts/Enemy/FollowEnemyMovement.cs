@@ -27,6 +27,7 @@ public class FollowEnemyMovement : MonoBehaviour
         if (!movementEnabled) return;
 
         bool isInTargetXPos = transform.position.x < (xPosOfActivator + followPhaseXPos);
+
         bool isNotCloseToPlayerY = transform.position.y > player.position.y + 0.1f || transform.position.y < player.position.y - 0.1f;
         if (isInTargetXPos)
         {

@@ -170,18 +170,27 @@ MonoBehaviour:
     description: take a break
     background: {fileID: 21300000, guid: da2aeb2a97b893248ba4c65aff711757, type: 3}
     buttons:
-    - title: Continue
+    - title: continue
       action: 2
-    - title: Main menu
+    - title: main menu
       action: 1
   gameOverMenu:
     title: game over!
     description: fishy business
     background: {fileID: 21300000, guid: 71f374214c927ba40bcdd4a761d66201, type: 3}
     buttons:
-    - title: Restart
+    - title: restart
       action: 0
-    - title: Main menu
+    - title: main menu
+      action: 1
+  theEndMenu:
+    title: the end
+    description: 'the curse is broken!
+
+      thanks for playing!'
+    background: {fileID: 21300000, guid: d806ccb928bb2c547888878fbee6a48e, type: 3}
+    buttons:
+    - title: main menu
       action: 1
 --- !u!1 &1225998331017382858
 GameObject:

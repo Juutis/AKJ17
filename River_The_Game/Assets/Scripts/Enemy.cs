@@ -83,12 +83,9 @@ public class Enemy : MonoBehaviour
 
     public void Kill()
     {
-        if (deathSprite != null)
-        {
-            renderer.sprite = deathSprite;
-        }
+        renderer.sprite = deathSprite;
         Alive = false;
-        rigidBody.gravityScale = 1.0f;
+        rigidBody.gravityScale = 0.4f;
         if (movement != null)
         {
             movement.enabled = false;

@@ -310,6 +310,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 323326213}
     m_Modifications:
+    - target: {fileID: 674446342138956572, guid: 1fe9fdfa98bb884499d6461a88e22d71, type: 3}
+      propertyPath: pickupPrefab
+      value: 
+      objectReference: {fileID: 8170041822089235385, guid: 6b518e1950bed304daa92db6bc709311, type: 3}
     - target: {fileID: 1468022275555157061, guid: 1fe9fdfa98bb884499d6461a88e22d71, type: 3}
       propertyPath: m_Name
       value: EnemyGroup (2)
@@ -3011,6 +3015,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 323326213}
     m_Modifications:
+    - target: {fileID: 674446342138956572, guid: 1fe9fdfa98bb884499d6461a88e22d71, type: 3}
+      propertyPath: pickupPrefab
+      value: 
+      objectReference: {fileID: 8170041822089235385, guid: f452f636ce2347b42999931fa8640b4b, type: 3}
     - target: {fileID: 1468022275555157061, guid: 1fe9fdfa98bb884499d6461a88e22d71, type: 3}
       propertyPath: m_Name
       value: EnemyGroup (3)

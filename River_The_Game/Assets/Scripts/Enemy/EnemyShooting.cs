@@ -88,6 +88,10 @@ public class EnemyShooting : MonoBehaviour
         {
             return;
         }
+        if (!enabled)
+        {
+            return;
+        }
 
         if (Time.time - lastShot < shootDelay)
         {

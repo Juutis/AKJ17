@@ -14,19 +14,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 637044843549356198, guid: ac5c7986a185a4f4ca81b72f664793bf, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
-      value: 0.039215688
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 637044843549356198, guid: ac5c7986a185a4f4ca81b72f664793bf, type: 3}
       propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.42745098
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 637044843549356198, guid: ac5c7986a185a4f4ca81b72f664793bf, type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
-      value: 0.7882353
+      value: 0.81960785
       objectReference: {fileID: 0}
     - target: {fileID: 6473306603327386261, guid: ac5c7986a185a4f4ca81b72f664793bf, type: 3}
       propertyPath: m_Name
-      value: PufferFishSplash
+      value: PufferFish Splash 1
       objectReference: {fileID: 0}
     - target: {fileID: 7523212157925699541, guid: ac5c7986a185a4f4ca81b72f664793bf, type: 3}
       propertyPath: m_RootOrder

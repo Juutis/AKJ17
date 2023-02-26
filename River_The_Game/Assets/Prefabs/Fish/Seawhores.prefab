@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2627010822635774037}
   m_Layer: 0
-  m_Name: Sardine
+  m_Name: Seawhores
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 6882335860184223582}
   - component: {fileID: 6648695638224216181}
   - component: {fileID: 169891221015690828}
-  - component: {fileID: 6425244215800608655}
+  - component: {fileID: 3405333524214596882}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -107,7 +107,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -688680911, guid: 835384072d073b54bb6154132d9c7acd, type: 3}
+  m_Sprite: {fileID: 1773580470, guid: c25112c5b092cbf4fb0102ce91ae7b78, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -138,7 +138,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!114 &6425244215800608655
+--- !u!114 &3405333524214596882
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

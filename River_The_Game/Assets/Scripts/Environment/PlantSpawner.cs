@@ -15,7 +15,7 @@ public class PlantSpawner : MonoBehaviour
     [SerializeField]
     private string sortingLayerName = "Default";
 
-    private float width = 500;
+    private float width = 1000;
 
     // Start is called before the first frame update
     void Start()

@@ -149,6 +149,7 @@ MonoBehaviour:
   type: 0
   phaseOffset: 0
   patternSpeed: 1
+  baseMovementSpeed: 1
   patternAmplitude: 0.5
   movementSpeed: 1
 --- !u!1001 &8295217660054249005

@@ -8,6 +8,8 @@ public class EnemyMovement : MonoBehaviour
     private float phaseOffset;
     [SerializeField]
     private float patternSpeed;
+    [SerializeField]
+    private float baseMovementSpeed;
 
     [Header("Circle and sin type")]
     [SerializeField]
@@ -44,12 +46,18 @@ public class EnemyMovement : MonoBehaviour
         float fromStart = Time.time - startTime;
         if (type == MovementType.Sin)
         {
-            transform.localPosition = startPos + Vector3.up * Mathf.Sin(fromStart * patternSpeed + phaseOffset) * patternAmplitude;
+            transform.localPosition = startPos
+                + Vector3.up * Mathf.Sin(fromStart * patternSpeed + phaseOffset) * patternAmplitude;
+
+            startPos += Vector3.left * baseMovementSpeed * Time.deltaTime;
         }
         else if (type == MovementType.Circle)
         {
-            transform.localPosition = startPos + Vector3.up * Mathf.Sin(fromStart * patternSpeed + phaseOffset) * patternAmplitude
-                                          + Vector3.left * Mathf.Cos(fromStart * patternSpeed + phaseOffset) * patternAmplitude;
+            transform.localPosition = startPos
+                + Vector3.up * Mathf.Sin(fromStart * patternSpeed + phaseOffset) * patternAmplitude
+                + Vector3.left * Mathf.Cos(fromStart * patternSpeed + phaseOffset) * patternAmplitude;
+
+            startPos += Vector3.left * baseMovementSpeed * Time.deltaTime;
         }
         else if (type == MovementType.GoPastAndTurnBack)
         {

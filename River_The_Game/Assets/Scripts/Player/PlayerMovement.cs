@@ -39,6 +39,8 @@ public class PlayerMovement : MonoBehaviour
     private GameObject waterSplash;
 
     private float lastY = 0;
+    private bool spawning = false;
+    private Collider2D coll;
 
     private void Update()
     {
@@ -53,10 +55,22 @@ public class PlayerMovement : MonoBehaviour
         {
             txtDebug.text = $"[isFalling: {isFalling}]\n[isAboveWater: {isAboveWater}] [velY: {rb.velocity.y}]\n[fallSpeedTimer: {fallSpeedTimer}]";
         }
+
+        if (spawning)
+        {
+            var t = Time.deltaTime * 5.0f;
+            transform.position = Vector2.MoveTowards(transform.position, WorldManager.main.PlayerStart.position, t);
+            if (Vector2.Distance(transform.position, WorldManager.main.PlayerStart.position) < 0.5f)
+            {
+                spawning = false;
+                coll.enabled = true;
+            }
+        }
     }
 
     private void Start()
     {
+        coll = GetComponent<Collider2D>();
         Spawn();
     }
 
@@ -72,7 +86,9 @@ public class PlayerMovement : MonoBehaviour
 
     public void Spawn()
     {
-        transform.position = WorldManager.main.PlayerStart.position;
+        transform.position = WorldManager.main.PlayerStart.position + Vector3.left * 10.0f;
+        spawning = true;
+        coll.enabled = false;
     }
 
     private void CheckAboveWaterStatus()
@@ -148,7 +164,7 @@ public class PlayerMovement : MonoBehaviour
         {
             return;
         }
-        if (!isAboveWater)
+        if (!isAboveWater && !spawning)
         {
             ApplyMovement();
         }
